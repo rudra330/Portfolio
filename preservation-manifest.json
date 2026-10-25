@@ -1,0 +1,438 @@
+{
+  "source": "Saved admin portfolio snapshot",
+  "projects": [
+    {
+      "id": "proj-custom-1792953537503",
+      "title": "Speaking Partner Mira",
+      "description_sha256": "3696d65f850dfda35508d6c681a5f3fc42e9d10f1fb2cadb2e892d706c2c8015",
+      "thumbnail": {
+        "path": "assets/2928cd8fd3d3d23cc0fbb608ddc0b2fecdfca70d3b75a838f3f000f568ceb9f7.png",
+        "sha256": "2928cd8fd3d3d23cc0fbb608ddc0b2fecdfca70d3b75a838f3f000f568ceb9f7",
+        "bytes": 1619209,
+        "mime": "image/png"
+      },
+      "files": [
+        {
+          "name": "Mira thumbnail.png",
+          "path": "assets/aad8272f605170ff5b9b4ffa444dc0c0e4f05aa46930c57907c56bec7bcc53a3.png",
+          "sha256": "aad8272f605170ff5b9b4ffa444dc0c0e4f05aa46930c57907c56bec7bcc53a3",
+          "bytes": 1542874,
+          "mime": "image/png"
+        },
+        {
+          "name": "Speaking partner Mira.mp4",
+          "path": "assets/681ba04b1c072f331fcbbb23d11c40fdd953fa3818b99e6cd3056853005469d3.mp4",
+          "sha256": "681ba04b1c072f331fcbbb23d11c40fdd953fa3818b99e6cd3056853005469d3",
+          "bytes": 119699469,
+          "mime": "video/mp4"
+        },
+        {
+          "name": "Upwork Mira thumbnail.png",
+          "path": "assets/2928cd8fd3d3d23cc0fbb608ddc0b2fecdfca70d3b75a838f3f000f568ceb9f7.png",
+          "sha256": "2928cd8fd3d3d23cc0fbb608ddc0b2fecdfca70d3b75a838f3f000f568ceb9f7",
+          "bytes": 1619209,
+          "mime": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "proj-hand-1",
+      "title": "Personal Hand Rehabilitation Assistant",
+      "description_sha256": "c0ed0d27fda3d87c0b06310db2cd906f93fc416b4eb9b38c0bbb66e11c61aaa8",
+      "thumbnail": {
+        "path": "assets/5e4a313b3ff36f2eb8421f130d9a876dba5b16e8bef030db8c8dc5c24ed660e5.png",
+        "sha256": "5e4a313b3ff36f2eb8421f130d9a876dba5b16e8bef030db8c8dc5c24ed660e5",
+        "bytes": 1801394,
+        "mime": "image/png"
+      },
+      "files": [
+        {
+          "name": "Hand rehad project video.mp4",
+          "path": "assets/8e246479e23c15424065c7634307b1f255fb3848f45d6b3c0d6a93daf24a36e4.mp4",
+          "sha256": "8e246479e23c15424065c7634307b1f255fb3848f45d6b3c0d6a93daf24a36e4",
+          "bytes": 4836613,
+          "mime": "video/mp4"
+        },
+        {
+          "name": "personal hand rehab assistant.pdf",
+          "path": "assets/43988e437cf4bf06bb081edbc001c86209b78ee5fe0e05a7c6564eca0baf289b.pdf",
+          "sha256": "43988e437cf4bf06bb081edbc001c86209b78ee5fe0e05a7c6564eca0baf289b",
+          "bytes": 623061,
+          "mime": "application/pdf"
+        }
+      ]
+    },
+    {
+      "id": "proj-tele-1",
+      "title": "MotionMirror — WebRTC Telerehabilitation & 3D Mirror Therapy App",
+      "description_sha256": "5db0ad40d994520fd937b5cb2463d0b44bb93cb619ad5754d0a0336ac9e4f727",
+      "thumbnail": {
+        "path": "assets/a7e10a7eed2fc2d969cd2982c64781600e0b06ed8f1c9cd8f14727a800673d57.jpg",
+        "sha256": "a7e10a7eed2fc2d969cd2982c64781600e0b06ed8f1c9cd8f14727a800673d57",
+        "bytes": 147456,
+        "mime": "image/jpeg"
+      },
+      "files": [
+        {
+          "name": "Mirror therapy.mp4",
+          "path": "assets/e7a0d41a933172dec2c39c08978b98fb459b6532ada1c4829647aec65bd9924d.mp4",
+          "sha256": "e7a0d41a933172dec2c39c08978b98fb459b6532ada1c4829647aec65bd9924d",
+          "bytes": 2677457,
+          "mime": "video/mp4"
+        },
+        {
+          "name": "Soft robotics rehab assistant video.mp4",
+          "path": "assets/fad903f990d0896fe42417ca5668f6d246d507be8929d6072dcff0bdbee5df43.mp4",
+          "sha256": "fad903f990d0896fe42417ca5668f6d246d507be8929d6072dcff0bdbee5df43",
+          "bytes": 20978222,
+          "mime": "video/mp4"
+        }
+      ]
+    },
+    {
+      "id": "proj-eeg-1",
+      "title": "Hybrid MDM-LDA BCI Framework for Stroke Motor Imagery Classification",
+      "description_sha256": "e7d7b009e694b33d98e37c51d26221c47de6c9f3ccb8176a380d8406dfbba848",
+      "thumbnail": {
+        "path": "assets/411e4e2981a9f773b87f79028780c01f587c75cce2a847ff9dc58d7201152313.png",
+        "sha256": "411e4e2981a9f773b87f79028780c01f587c75cce2a847ff9dc58d7201152313",
+        "bytes": 2525383,
+        "mime": "image/png"
+      },
+      "files": [
+        {
+          "name": "MI_EEG_Classification_Pipeline_High_Resolution.png",
+          "path": "assets/98260d504f3d273e2b1412993a914fc9812902065d678de59a03716b2b2f2b68.png",
+          "sha256": "98260d504f3d273e2b1412993a914fc9812902065d678de59a03716b2b2f2b68",
+          "bytes": 24183567,
+          "mime": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "proj-img-1",
+      "title": "Skin Cancer Classification Using Deep Learning (EfficientNet-B2)",
+      "description_sha256": "3b1c0261619cd44c4794ba12f6d42c526f2f8b7ec127a44fb8ed65bfdb7b87e8",
+      "thumbnail": {
+        "path": "assets/6b2ab3ac911c69d4fb6179ed51a72711023aa5eb2d297ab7d94bfe7605725fe5.jpg",
+        "sha256": "6b2ab3ac911c69d4fb6179ed51a72711023aa5eb2d297ab7d94bfe7605725fe5",
+        "bytes": 48888,
+        "mime": "image/jpeg"
+      },
+      "files": []
+    },
+    {
+      "id": "proj-bsn-1",
+      "title": "Smart Pregnancy Pain-Relief Wearable Belt & Non-Invasive Bilirubin Detector",
+      "description_sha256": "57dccedb33061767436d711c053aa590365f2286165f0522682a374cbbfbb988",
+      "thumbnail": {
+        "path": "assets/aaace17017b460acc05ee1b8c4af3fa7720dc72e894ee13ec9a558497e2a0a7b.jpg",
+        "sha256": "aaace17017b460acc05ee1b8c4af3fa7720dc72e894ee13ec9a558497e2a0a7b",
+        "bytes": 138138,
+        "mime": "image/jpeg"
+      },
+      "files": [
+        {
+          "name": "BSN project video.mp4",
+          "path": "assets/d2bf105791ffcc298210241d95cc988ea779d8f0c9a109e9d70667685cd0cbc0.mp4",
+          "sha256": "d2bf105791ffcc298210241d95cc988ea779d8f0c9a109e9d70667685cd0cbc0",
+          "bytes": 9469268,
+          "mime": "video/mp4"
+        },
+        {
+          "name": "SMART PREGNANCY PAIN-RELIEF BELT.pdf",
+          "path": "assets/ab5d24d0da7c1e6f92c9e735d90f0c8823af6a5feda88d3b1f8b45cf372bfabb.pdf",
+          "sha256": "ab5d24d0da7c1e6f92c9e735d90f0c8823af6a5feda88d3b1f8b45cf372bfabb",
+          "bytes": 602318,
+          "mime": "application/pdf"
+        }
+      ]
+    },
+    {
+      "id": "proj-iot-1",
+      "title": "IoT Hospital Critical-Care Environmental Monitoring System",
+      "description_sha256": "4df5ca0d1b9859966cc631509b29185102aea9151cb9e8b576a36edc337a7030",
+      "thumbnail": {
+        "path": "assets/32f93685498a58b98bbe20df05da79132e4ded12d546662508968a8f116ac602.svg",
+        "sha256": "32f93685498a58b98bbe20df05da79132e4ded12d546662508968a8f116ac602",
+        "bytes": 1206,
+        "mime": "image/svg+xml"
+      },
+      "files": [
+        {
+          "name": "Env monitoring project video.mp4",
+          "path": "assets/d2bf105791ffcc298210241d95cc988ea779d8f0c9a109e9d70667685cd0cbc0.mp4",
+          "sha256": "d2bf105791ffcc298210241d95cc988ea779d8f0c9a109e9d70667685cd0cbc0",
+          "bytes": 9469268,
+          "mime": "video/mp4"
+        },
+        {
+          "name": "IOT Enable Advanced Environmental Monitoring System for Hospitals.pdf",
+          "path": "assets/f12ec7b6de0f3c2482a44accbc7ad8eb0739df5004fda7ffc01caa0f67b95654.pdf",
+          "sha256": "f12ec7b6de0f3c2482a44accbc7ad8eb0739df5004fda7ffc01caa0f67b95654",
+          "bytes": 581640,
+          "mime": "application/pdf"
+        }
+      ]
+    },
+    {
+      "id": "proj-n8n-1",
+      "title": "Smart Email Router & Weather Alert Bot with n8n",
+      "description_sha256": "c6e4d332a8f462b958857703e34b2d702770d7be4f3c4da3aacb17ca979c07ae",
+      "thumbnail": {
+        "path": "assets/0d6002927f9c72a699616b70e8514a18858ab5a9cf34ca664e36a7cdc80312c0.png",
+        "sha256": "0d6002927f9c72a699616b70e8514a18858ab5a9cf34ca664e36a7cdc80312c0",
+        "bytes": 23054036,
+        "mime": "image/png"
+      },
+      "files": [
+        {
+          "name": "Screenshot 2026-10-13 005131.png",
+          "path": "assets/ca13af33f48918c2151b94b04962d7283c60103a3ce343db70140fc42a0bac92.png",
+          "sha256": "ca13af33f48918c2151b94b04962d7283c60103a3ce343db70140fc42a0bac92",
+          "bytes": 416107,
+          "mime": "image/png"
+        },
+        {
+          "name": "Screenshot 2026-10-13 005334.png",
+          "path": "assets/18ecaa6f0f71b2e29bcb6605ce1b992a988ee5301496c1e1388e6dc0014193bb.png",
+          "sha256": "18ecaa6f0f71b2e29bcb6605ce1b992a988ee5301496c1e1388e6dc0014193bb",
+          "bytes": 127962,
+          "mime": "image/png"
+        }
+      ]
+    },
+    {
+      "id": "proj-sim-1",
+      "title": "Proteus Biomedical Instrumentation & MATLAB Microstrip Patch Antenna",
+      "description_sha256": "430031a40ac8fa44a36e92eb50bdedeb3323c2a611ab25e5eb3787c3688fca9e",
+      "thumbnail": {
+        "path": "assets/b21b41e4e8a2f0f37474f1382714e96650cc60f85bc524ef48533eb9626b774e.jpg",
+        "sha256": "b21b41e4e8a2f0f37474f1382714e96650cc60f85bc524ef48533eb9626b774e",
+        "bytes": 147757,
+        "mime": "image/jpeg"
+      },
+      "files": [
+        {
+          "name": "A simulation of heart rate counter.pdf",
+          "path": "assets/4adb912c54286ee22dbd97f170ba14cd5d8fc9180a468bb4b62a579294b4d027.pdf",
+          "sha256": "4adb912c54286ee22dbd97f170ba14cd5d8fc9180a468bb4b62a579294b4d027",
+          "bytes": 1007952,
+          "mime": "application/pdf"
+        },
+        {
+          "name": "Analysis and Design of Micro-strip Patch Antenna.docx",
+          "path": "assets/4a52a067c583d6ea25d607a95c366e35a7d0231d3fbdb1c2ddc2669b5201d758.docx",
+          "sha256": "4a52a067c583d6ea25d607a95c366e35a7d0231d3fbdb1c2ddc2669b5201d758",
+          "bytes": 522089,
+          "mime": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        },
+        {
+          "name": "SIMULATION OF SENSORS THROUGH .pdf",
+          "path": "assets/45a9573b3e2a6bd5ed843aa02276f50c314ca7fc2ad1a4697e96abf2723ed1a4.pdf",
+          "sha256": "45a9573b3e2a6bd5ed843aa02276f50c314ca7fc2ad1a4697e96abf2723ed1a4",
+          "bytes": 707580,
+          "mime": "application/pdf"
+        }
+      ]
+    },
+    {
+      "id": "proj-cert-1",
+      "title": "Coursera n8n AI Agents, Healthcare GenAI & Academic Honors",
+      "description_sha256": "fae40c42a3b79d219134d4521ddfd0ad3610ebfb87bff4d9e76aee54121afca8",
+      "thumbnail": {
+        "path": "assets/58684305e51c242e1d032dba577a424302f3d10b0123fa2d114f7882b21b9a95.png",
+        "sha256": "58684305e51c242e1d032dba577a424302f3d10b0123fa2d114f7882b21b9a95",
+        "bytes": 2191724,
+        "mime": "image/png"
+      },
+      "files": [
+        {
+          "name": "Build AI Agents & Secure API Integrations with n8n Certificate.pdf",
+          "path": "assets/3d6a9dcef42f392b68a2aab76de391eedef296e838829340f8c943ad1c266d9f.pdf",
+          "sha256": "3d6a9dcef42f392b68a2aab76de391eedef296e838829340f8c943ad1c266d9f",
+          "bytes": 330489,
+          "mime": "application/pdf"
+        },
+        {
+          "name": "GenAI for Healthcare certificate.pdf",
+          "path": "assets/4feb7e3a0b20d6d7b677fb363b07b62681549b5ee2ee34e0769b5aadd602038d.pdf",
+          "sha256": "4feb7e3a0b20d6d7b677fb363b07b62681549b5ee2ee34e0769b5aadd602038d",
+          "bytes": 289420,
+          "mime": "application/pdf"
+        },
+        {
+          "name": "Integrate AI Models in n8n Prompt Engineering & Outputs Certificate.pdf",
+          "path": "assets/992316a19d7aba53c8beb381fe1d0acd8829e8c970fe772abc68069f31e28f3c.pdf",
+          "sha256": "992316a19d7aba53c8beb381fe1d0acd8829e8c970fe772abc68069f31e28f3c",
+          "bytes": 331089,
+          "mime": "application/pdf"
+        },
+        {
+          "name": "Workflow Automation with n8n Logic, Data & Error Handling certificate.pdf",
+          "path": "assets/ec7aa2a359f9cbb6c6e2fcd4151a434ed637e6107963e77193d34ce1ce817c82.pdf",
+          "sha256": "ec7aa2a359f9cbb6c6e2fcd4151a434ed637e6107963e77193d34ce1ce817c82",
+          "bytes": 330899,
+          "mime": "application/pdf"
+        }
+      ]
+    }
+  ],
+  "assets": {
+    "assets/0d6002927f9c72a699616b70e8514a18858ab5a9cf34ca664e36a7cdc80312c0.png": {
+      "sha256": "0d6002927f9c72a699616b70e8514a18858ab5a9cf34ca664e36a7cdc80312c0",
+      "bytes": 23054036,
+      "mime": "image/png"
+    },
+    "assets/18ecaa6f0f71b2e29bcb6605ce1b992a988ee5301496c1e1388e6dc0014193bb.png": {
+      "sha256": "18ecaa6f0f71b2e29bcb6605ce1b992a988ee5301496c1e1388e6dc0014193bb",
+      "bytes": 127962,
+      "mime": "image/png"
+    },
+    "assets/2928cd8fd3d3d23cc0fbb608ddc0b2fecdfca70d3b75a838f3f000f568ceb9f7.png": {
+      "sha256": "2928cd8fd3d3d23cc0fbb608ddc0b2fecdfca70d3b75a838f3f000f568ceb9f7",
+      "bytes": 1619209,
+      "mime": "image/png"
+    },
+    "assets/32f93685498a58b98bbe20df05da79132e4ded12d546662508968a8f116ac602.svg": {
+      "sha256": "32f93685498a58b98bbe20df05da79132e4ded12d546662508968a8f116ac602",
+      "bytes": 1206,
+      "mime": "image/svg+xml"
+    },
+    "assets/3d6a9dcef42f392b68a2aab76de391eedef296e838829340f8c943ad1c266d9f.pdf": {
+      "sha256": "3d6a9dcef42f392b68a2aab76de391eedef296e838829340f8c943ad1c266d9f",
+      "bytes": 330489,
+      "mime": "application/pdf"
+    },
+    "assets/411e4e2981a9f773b87f79028780c01f587c75cce2a847ff9dc58d7201152313.png": {
+      "sha256": "411e4e2981a9f773b87f79028780c01f587c75cce2a847ff9dc58d7201152313",
+      "bytes": 2525383,
+      "mime": "image/png"
+    },
+    "assets/43988e437cf4bf06bb081edbc001c86209b78ee5fe0e05a7c6564eca0baf289b.pdf": {
+      "sha256": "43988e437cf4bf06bb081edbc001c86209b78ee5fe0e05a7c6564eca0baf289b",
+      "bytes": 623061,
+      "mime": "application/pdf"
+    },
+    "assets/45a9573b3e2a6bd5ed843aa02276f50c314ca7fc2ad1a4697e96abf2723ed1a4.pdf": {
+      "sha256": "45a9573b3e2a6bd5ed843aa02276f50c314ca7fc2ad1a4697e96abf2723ed1a4",
+      "bytes": 707580,
+      "mime": "application/pdf"
+    },
+    "assets/4a52a067c583d6ea25d607a95c366e35a7d0231d3fbdb1c2ddc2669b5201d758.docx": {
+      "sha256": "4a52a067c583d6ea25d607a95c366e35a7d0231d3fbdb1c2ddc2669b5201d758",
+      "bytes": 522089,
+      "mime": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    },
+    "assets/4adb912c54286ee22dbd97f170ba14cd5d8fc9180a468bb4b62a579294b4d027.pdf": {
+      "sha256": "4adb912c54286ee22dbd97f170ba14cd5d8fc9180a468bb4b62a579294b4d027",
+      "bytes": 1007952,
+      "mime": "application/pdf"
+    },
+    "assets/4feb7e3a0b20d6d7b677fb363b07b62681549b5ee2ee34e0769b5aadd602038d.pdf": {
+      "sha256": "4feb7e3a0b20d6d7b677fb363b07b62681549b5ee2ee34e0769b5aadd602038d",
+      "bytes": 289420,
+      "mime": "application/pdf"
+    },
+    "assets/58684305e51c242e1d032dba577a424302f3d10b0123fa2d114f7882b21b9a95.png": {
+      "sha256": "58684305e51c242e1d032dba577a424302f3d10b0123fa2d114f7882b21b9a95",
+      "bytes": 2191724,
+      "mime": "image/png"
+    },
+    "assets/5e4a313b3ff36f2eb8421f130d9a876dba5b16e8bef030db8c8dc5c24ed660e5.png": {
+      "sha256": "5e4a313b3ff36f2eb8421f130d9a876dba5b16e8bef030db8c8dc5c24ed660e5",
+      "bytes": 1801394,
+      "mime": "image/png"
+    },
+    "assets/681ba04b1c072f331fcbbb23d11c40fdd953fa3818b99e6cd3056853005469d3.mp4": {
+      "sha256": "681ba04b1c072f331fcbbb23d11c40fdd953fa3818b99e6cd3056853005469d3",
+      "bytes": 119699469,
+      "mime": "video/mp4"
+    },
+    "assets/6b2ab3ac911c69d4fb6179ed51a72711023aa5eb2d297ab7d94bfe7605725fe5.jpg": {
+      "sha256": "6b2ab3ac911c69d4fb6179ed51a72711023aa5eb2d297ab7d94bfe7605725fe5",
+      "bytes": 48888,
+      "mime": "image/jpeg"
+    },
+    "assets/8e246479e23c15424065c7634307b1f255fb3848f45d6b3c0d6a93daf24a36e4.mp4": {
+      "sha256": "8e246479e23c15424065c7634307b1f255fb3848f45d6b3c0d6a93daf24a36e4",
+      "bytes": 4836613,
+      "mime": "video/mp4"
+    },
+    "assets/98260d504f3d273e2b1412993a914fc9812902065d678de59a03716b2b2f2b68.png": {
+      "sha256": "98260d504f3d273e2b1412993a914fc9812902065d678de59a03716b2b2f2b68",
+      "bytes": 24183567,
+      "mime": "image/png"
+    },
+    "assets/992316a19d7aba53c8beb381fe1d0acd8829e8c970fe772abc68069f31e28f3c.pdf": {
+      "sha256": "992316a19d7aba53c8beb381fe1d0acd8829e8c970fe772abc68069f31e28f3c",
+      "bytes": 331089,
+      "mime": "application/pdf"
+    },
+    "assets/a14faf015484887c8df2ac906a452ac4ad0690e2602494a434a5467203693a72.png": {
+      "sha256": "a14faf015484887c8df2ac906a452ac4ad0690e2602494a434a5467203693a72",
+      "bytes": 772117,
+      "mime": "image/png"
+    },
+    "assets/a7e10a7eed2fc2d969cd2982c64781600e0b06ed8f1c9cd8f14727a800673d57.jpg": {
+      "sha256": "a7e10a7eed2fc2d969cd2982c64781600e0b06ed8f1c9cd8f14727a800673d57",
+      "bytes": 147456,
+      "mime": "image/jpeg"
+    },
+    "assets/aaace17017b460acc05ee1b8c4af3fa7720dc72e894ee13ec9a558497e2a0a7b.jpg": {
+      "sha256": "aaace17017b460acc05ee1b8c4af3fa7720dc72e894ee13ec9a558497e2a0a7b",
+      "bytes": 138138,
+      "mime": "image/jpeg"
+    },
+    "assets/aad8272f605170ff5b9b4ffa444dc0c0e4f05aa46930c57907c56bec7bcc53a3.png": {
+      "sha256": "aad8272f605170ff5b9b4ffa444dc0c0e4f05aa46930c57907c56bec7bcc53a3",
+      "bytes": 1542874,
+      "mime": "image/png"
+    },
+    "assets/ab5d24d0da7c1e6f92c9e735d90f0c8823af6a5feda88d3b1f8b45cf372bfabb.pdf": {
+      "sha256": "ab5d24d0da7c1e6f92c9e735d90f0c8823af6a5feda88d3b1f8b45cf372bfabb",
+      "bytes": 602318,
+      "mime": "application/pdf"
+    },
+    "assets/b21b41e4e8a2f0f37474f1382714e96650cc60f85bc524ef48533eb9626b774e.jpg": {
+      "sha256": "b21b41e4e8a2f0f37474f1382714e96650cc60f85bc524ef48533eb9626b774e",
+      "bytes": 147757,
+      "mime": "image/jpeg"
+    },
+    "assets/c2208e21eb6a8bf120df6814e46b09c74f820a229b9c0dfcff6b2a6f24faccf7.pdf": {
+      "sha256": "c2208e21eb6a8bf120df6814e46b09c74f820a229b9c0dfcff6b2a6f24faccf7",
+      "bytes": 142905,
+      "mime": "application/pdf"
+    },
+    "assets/ca13af33f48918c2151b94b04962d7283c60103a3ce343db70140fc42a0bac92.png": {
+      "sha256": "ca13af33f48918c2151b94b04962d7283c60103a3ce343db70140fc42a0bac92",
+      "bytes": 416107,
+      "mime": "image/png"
+    },
+    "assets/d2bf105791ffcc298210241d95cc988ea779d8f0c9a109e9d70667685cd0cbc0.mp4": {
+      "sha256": "d2bf105791ffcc298210241d95cc988ea779d8f0c9a109e9d70667685cd0cbc0",
+      "bytes": 9469268,
+      "mime": "video/mp4"
+    },
+    "assets/e7a0d41a933172dec2c39c08978b98fb459b6532ada1c4829647aec65bd9924d.mp4": {
+      "sha256": "e7a0d41a933172dec2c39c08978b98fb459b6532ada1c4829647aec65bd9924d",
+      "bytes": 2677457,
+      "mime": "video/mp4"
+    },
+    "assets/ec7aa2a359f9cbb6c6e2fcd4151a434ed637e6107963e77193d34ce1ce817c82.pdf": {
+      "sha256": "ec7aa2a359f9cbb6c6e2fcd4151a434ed637e6107963e77193d34ce1ce817c82",
+      "bytes": 330899,
+      "mime": "application/pdf"
+    },
+    "assets/f12ec7b6de0f3c2482a44accbc7ad8eb0739df5004fda7ffc01caa0f67b95654.pdf": {
+      "sha256": "f12ec7b6de0f3c2482a44accbc7ad8eb0739df5004fda7ffc01caa0f67b95654",
+      "bytes": 581640,
+      "mime": "application/pdf"
+    },
+    "assets/fad903f990d0896fe42417ca5668f6d246d507be8929d6072dcff0bdbee5df43.mp4": {
+      "sha256": "fad903f990d0896fe42417ca5668f6d246d507be8929d6072dcff0bdbee5df43",
+      "bytes": 20978222,
+      "mime": "video/mp4"
+    }
+  }
+}

@@ -1,0 +1,322 @@
+{
+  "projects": [
+    {
+      "id": "proj-custom-1792953537503",
+      "folder": "Mira Speaking partner",
+      "title": "Speaking Partner Mira",
+      "desc": "Mira is an AI-powered speaking partner featuring an interactive 3D avatar that responds to users' questions and engages in natural conversations. It is designed to help users improve their English-speaking skills, fluency, and confidence through regular practice.\n\nMany students and individuals can understand, read, and write English but struggle to speak it fluently and confidently. Mira aims to bridge this gap by providing a friendly, comfortable, and judgment-free environment where users can practice speaking without hesitation or fear of making mistakes.\n\nWith its gentle voice, friendly tone, and clear, well-structured responses, Mira makes English learning more engaging, interactive, and effective. Through continuous conversations, users can gradually overcome their fear of speaking English and develop better communication skills.",
+      "tags": [
+        "3D avatar",
+        "TypeScript",
+        "Next.js + React",
+        "WebRTC"
+      ],
+      "thumb": "assets/2928cd8fd3d3d23cc0fbb608ddc0b2fecdfca70d3b75a838f3f000f568ceb9f7.png",
+      "files": [
+        {
+          "name": "Mira thumbnail.png",
+          "relativePath": "Mira thumbnail.png",
+          "type": "image",
+          "size": "1.5 MB",
+          "bytes": 1542874,
+          "lastModified": 1792327736017,
+          "url": "assets/aad8272f605170ff5b9b4ffa444dc0c0e4f05aa46930c57907c56bec7bcc53a3.png"
+        },
+        {
+          "name": "Speaking partner Mira.mp4",
+          "relativePath": "Speaking partner Mira.mp4",
+          "type": "video",
+          "size": "114.2 MB",
+          "bytes": 119699469,
+          "lastModified": 1792323876481,
+          "url": "assets/681ba04b1c072f331fcbbb23d11c40fdd953fa3818b99e6cd3056853005469d3.mp4"
+        },
+        {
+          "name": "Upwork Mira thumbnail.png",
+          "relativePath": "Upwork Mira thumbnail.png",
+          "type": "image",
+          "size": "1.5 MB",
+          "bytes": 1619209,
+          "lastModified": 1792328181555,
+          "url": "assets/2928cd8fd3d3d23cc0fbb608ddc0b2fecdfca70d3b75a838f3f000f568ceb9f7.png"
+        }
+      ]
+    },
+    {
+      "id": "proj-hand-1",
+      "folder": "Hand rehab(Robotics) project",
+      "title": "Personal Hand Rehabilitation Assistant",
+      "desc": "Developed a portable, home-based bilateral smart glove system for post-stroke hand rehabilitation that integrates mirror therapy with real-time sensor motion tracking and motor-assisted actuation. The healthy-hand transmitter glove uses a calibrated flex sensor on the index finger to measure bending angles and a palmar force-sensitive resistor (FSR) to detect grip force, processed by an ESP32 microcontroller and transmitted wirelessly with minimal latency. On the paralyzed-hand receiver glove, a second ESP32 and a PCA9685 motor driver control five MG996R servo motors on a custom PCB/Veroboard circuit—proportionally replicating finger flexion and triggering synchronized multi-finger grasping based on palmar grip pressure while mitigating power fluctuations and servo jitter.",
+      "tags": [
+        "ESP32 Microcontroller (Dual Wireless)",
+        "Flex Sensors",
+        "Force-Sensitive Resistor (FSR)",
+        "Servo Motor MG996R",
+        "PCA9685 Motor Driver",
+        "Custom PCB & Veroboard",
+        "Mirror Therapy",
+        "Stroke Rehabilitation"
+      ],
+      "thumb": "assets/5e4a313b3ff36f2eb8421f130d9a876dba5b16e8bef030db8c8dc5c24ed660e5.png",
+      "files": [
+        {
+          "name": "Hand rehad project video.mp4",
+          "type": "video",
+          "size": "4.6 MB",
+          "url": "assets/8e246479e23c15424065c7634307b1f255fb3848f45d6b3c0d6a93daf24a36e4.mp4"
+        },
+        {
+          "name": "personal hand rehab assistant.pdf",
+          "type": "pdf",
+          "size": "608.5 KB",
+          "url": "assets/43988e437cf4bf06bb081edbc001c86209b78ee5fe0e05a7c6564eca0baf289b.pdf"
+        }
+      ]
+    },
+    {
+      "id": "proj-tele-1",
+      "folder": "Tele rehab app",
+      "title": "MotionMirror — WebRTC Telerehabilitation & 3D Mirror Therapy App",
+      "desc": "Full-stack telemedicine platform (Next.js / Firebase / WebRTC) combining real-time doctor-patient video consultations, remote pneumatic therapy controls, camera-driven individual finger tracking, and interactive 3D mirror-therapy hand visualization.",
+      "tags": [
+        "Next.js",
+        "Firebase",
+        "WebRTC",
+        "MediaPipe",
+        "3D Hand Visualization",
+        "Telerehabilitation"
+      ],
+      "thumb": "assets/a7e10a7eed2fc2d969cd2982c64781600e0b06ed8f1c9cd8f14727a800673d57.jpg",
+      "files": [
+        {
+          "name": "Mirror therapy.mp4",
+          "type": "video",
+          "size": "2.6 MB",
+          "url": "assets/e7a0d41a933172dec2c39c08978b98fb459b6532ada1c4829647aec65bd9924d.mp4"
+        },
+        {
+          "name": "Soft robotics rehab assistant video.mp4",
+          "type": "video",
+          "size": "20.0 MB",
+          "url": "assets/fad903f990d0896fe42417ca5668f6d246d507be8929d6072dcff0bdbee5df43.mp4"
+        }
+      ]
+    },
+    {
+      "id": "proj-eeg-1",
+      "folder": "EEG Project",
+      "title": "Hybrid MDM-LDA BCI Framework for Stroke Motor Imagery Classification",
+      "desc": "First-author IEEE conference research (QPAIN / ICCIT 2026) decoding motor imagery EEG from 50 stroke patients. Extracted 449 Riemannian covariance tangent-space and inter-hemispheric coherence features across 19 sub-bands (8–30 Hz), achieving 82.0% mean accuracy (κ = 0.62) and 81.14% macro F1.",
+      "tags": [
+        "EEG / BCI",
+        "Riemannian Geometry",
+        "MDM-LDA",
+        "MATLAB",
+        "EEGLAB",
+        "Python",
+        "XAI"
+      ],
+      "thumb": "assets/411e4e2981a9f773b87f79028780c01f587c75cce2a847ff9dc58d7201152313.png",
+      "files": [
+        {
+          "name": "MI_EEG_Classification_Pipeline_High_Resolution.png",
+          "type": "image",
+          "size": "23.1 MB",
+          "url": "assets/98260d504f3d273e2b1412993a914fc9812902065d678de59a03716b2b2f2b68.png"
+        }
+      ]
+    },
+    {
+      "id": "proj-img-1",
+      "folder": "Image processing project",
+      "title": "Skin Cancer Classification Using Deep Learning (EfficientNet-B2)",
+      "desc": "Fine-tuned a 7-class EfficientNet-B2 CNN on ~10,000 dermatoscopic images (HAM10000) using lesion-ID-based splitting to prevent data leakage, class-weighted cross-entropy, and cosine annealing. Achieved 79.63% test accuracy, 0.8075 weighted F1, and 0.9522 mean ROC-AUC.",
+      "tags": [
+        "PyTorch",
+        "EfficientNet-B2",
+        "HAM10000",
+        "Medical Imaging",
+        "Deep Learning"
+      ],
+      "thumb": "assets/6b2ab3ac911c69d4fb6179ed51a72711023aa5eb2d297ab7d94bfe7605725fe5.jpg",
+      "files": []
+    },
+    {
+      "id": "proj-bsn-1",
+      "folder": "Body sensor network project",
+      "title": "Smart Pregnancy Pain-Relief Wearable Belt & Non-Invasive Bilirubin Detector",
+      "desc": "ESP32 wearable Body Sensor Network integrating FSR pressure and DHT22 thermal sensors with dual vibration actuators and a MIT App Inventor Wi-Fi control app (~3,500 BDT prototype). Also developed a non-invasive optical PPG bilirubin detector using an OPT101P photodiode and tri-wavelength light.",
+      "tags": [
+        "Body Sensor Network",
+        "ESP32",
+        "FSR & DHT22",
+        "OPT101P PPG",
+        "MIT App Inventor"
+      ],
+      "thumb": "assets/aaace17017b460acc05ee1b8c4af3fa7720dc72e894ee13ec9a558497e2a0a7b.jpg",
+      "files": [
+        {
+          "name": "BSN project video.mp4",
+          "type": "video",
+          "size": "9.0 MB",
+          "url": "assets/d2bf105791ffcc298210241d95cc988ea779d8f0c9a109e9d70667685cd0cbc0.mp4"
+        },
+        {
+          "name": "SMART PREGNANCY PAIN-RELIEF BELT.pdf",
+          "type": "pdf",
+          "size": "588.2 KB",
+          "url": "assets/ab5d24d0da7c1e6f92c9e735d90f0c8823af6a5feda88d3b1f8b45cf372bfabb.pdf"
+        }
+      ]
+    },
+    {
+      "id": "proj-iot-1",
+      "folder": "Iot enable environment monitoring",
+      "title": "IoT Hospital Critical-Care Environmental Monitoring System",
+      "desc": "ESP32-based clinical telemetry node acquiring real-time temperature, humidity (DHT22), and air-quality/gas (MQ-135) measurements with live Blynk cloud dashboards and automated threshold alerting for hospital ICUs and wards.",
+      "tags": [
+        "IoT Healthcare",
+        "ESP32",
+        "DHT22",
+        "MQ-135",
+        "Blynk Cloud",
+        "Alerting"
+      ],
+      "thumb": "assets/32f93685498a58b98bbe20df05da79132e4ded12d546662508968a8f116ac602.svg",
+      "files": [
+        {
+          "name": "Env monitoring project video.mp4",
+          "type": "video",
+          "size": "9.0 MB",
+          "url": "assets/d2bf105791ffcc298210241d95cc988ea779d8f0c9a109e9d70667685cd0cbc0.mp4"
+        },
+        {
+          "name": "IOT Enable Advanced Environmental Monitoring System for Hospitals.pdf",
+          "type": "pdf",
+          "size": "568.0 KB",
+          "url": "assets/f12ec7b6de0f3c2482a44accbc7ad8eb0739df5004fda7ffc01caa0f67b95654.pdf"
+        }
+      ]
+    },
+    {
+      "id": "proj-n8n-1",
+      "folder": "N8n projects",
+      "title": "Smart Email Router & Weather Alert Bot with n8n",
+      "desc": "Built two n8n automations: a Gmail-to-Telegram notifier using Gemini to summarise email subjects, and a city-based weather bot using WeatherAPI. Integrated webhooks, JavaScript logic, request validation, and formatted weather responses.",
+      "tags": [
+        "n8n",
+        "Workflow Automation",
+        "Google Gemini",
+        "Gmail",
+        "Telegram Bot",
+        "WeatherAPI",
+        "Webhooks",
+        "JavaScript",
+        "API Integration",
+        "Email Automation",
+        "Weather Alerts"
+      ],
+      "thumb": "assets/0d6002927f9c72a699616b70e8514a18858ab5a9cf34ca664e36a7cdc80312c0.png",
+      "files": [
+        {
+          "name": "Screenshot 2026-10-13 005131.png",
+          "type": "image",
+          "size": "406.4 KB",
+          "url": "assets/ca13af33f48918c2151b94b04962d7283c60103a3ce343db70140fc42a0bac92.png"
+        },
+        {
+          "name": "Screenshot 2026-10-13 005334.png",
+          "type": "image",
+          "size": "125.0 KB",
+          "url": "assets/18ecaa6f0f71b2e29bcb6605ce1b992a988ee5301496c1e1388e6dc0014193bb.png"
+        }
+      ]
+    },
+    {
+      "id": "proj-sim-1",
+      "folder": "Simulation project",
+      "title": "Proteus Biomedical Instrumentation & MATLAB Microstrip Patch Antenna",
+      "desc": "Designed and validated Arduino-based Heart-Rate LCD monitoring and LM35/Ultrasonic proximity simulations in Proteus, alongside MATLAB electromagnetic analysis of Microstrip Patch Antenna return loss (S11) and input impedance.",
+      "tags": [
+        "Proteus Simulation",
+        "MATLAB Antenna S11",
+        "Arduino",
+        "Heart-Rate Sensor",
+        "LM35"
+      ],
+      "thumb": "assets/b21b41e4e8a2f0f37474f1382714e96650cc60f85bc524ef48533eb9626b774e.jpg",
+      "files": [
+        {
+          "name": "A simulation of heart rate counter.pdf",
+          "type": "pdf",
+          "size": "984.3 KB",
+          "url": "assets/4adb912c54286ee22dbd97f170ba14cd5d8fc9180a468bb4b62a579294b4d027.pdf"
+        },
+        {
+          "name": "Analysis and Design of Micro-strip Patch Antenna.docx",
+          "type": "doc",
+          "size": "509.9 KB",
+          "url": "assets/4a52a067c583d6ea25d607a95c366e35a7d0231d3fbdb1c2ddc2669b5201d758.docx"
+        },
+        {
+          "name": "SIMULATION OF SENSORS THROUGH .pdf",
+          "type": "pdf",
+          "size": "691.0 KB",
+          "url": "assets/45a9573b3e2a6bd5ed843aa02276f50c314ca7fc2ad1a4697e96abf2723ed1a4.pdf"
+        }
+      ]
+    },
+    {
+      "id": "proj-cert-1",
+      "folder": "Certificates",
+      "title": "Coursera n8n AI Agents, Healthcare GenAI & Academic Honors",
+      "desc": "4 verified Coursera certifications (2026): Build AI Agents & Secure API Integrations with n8n (000GDUMC1N5R), Integrate AI Models in n8n (BYVGDH30N5R5), Workflow Automation with n8n (QL0RH6HKU4UV), and GenAI for Healthcare Automation (XIZR960ZH8YL), plus CU Science Fair Best Stall Award.",
+      "tags": [
+        "Coursera Verified",
+        "n8n AI Agents",
+        "Healthcare GenAI",
+        "Best Stall Award"
+      ],
+      "thumb": "assets/58684305e51c242e1d032dba577a424302f3d10b0123fa2d114f7882b21b9a95.png",
+      "files": [
+        {
+          "name": "Build AI Agents & Secure API Integrations with n8n Certificate.pdf",
+          "type": "pdf",
+          "size": "322.7 KB",
+          "url": "assets/3d6a9dcef42f392b68a2aab76de391eedef296e838829340f8c943ad1c266d9f.pdf"
+        },
+        {
+          "name": "GenAI for Healthcare certificate.pdf",
+          "type": "pdf",
+          "size": "282.6 KB",
+          "url": "assets/4feb7e3a0b20d6d7b677fb363b07b62681549b5ee2ee34e0769b5aadd602038d.pdf"
+        },
+        {
+          "name": "Integrate AI Models in n8n Prompt Engineering & Outputs Certificate.pdf",
+          "type": "pdf",
+          "size": "323.3 KB",
+          "url": "assets/992316a19d7aba53c8beb381fe1d0acd8829e8c970fe772abc68069f31e28f3c.pdf"
+        },
+        {
+          "name": "Workflow Automation with n8n Logic, Data & Error Handling certificate.pdf",
+          "type": "pdf",
+          "size": "323.1 KB",
+          "url": "assets/ec7aa2a359f9cbb6c6e2fcd4151a434ed637e6107963e77193d34ce1ce817c82.pdf"
+        }
+      ]
+    }
+  ],
+  "folders": [
+    "All Folders",
+    "Hand rehab(Robotics) project",
+    "Tele rehab app",
+    "EEG Project",
+    "Image processing project",
+    "Body sensor network project",
+    "Iot enable environment monitoring",
+    "N8n projects",
+    "Simulation project",
+    "Certificates",
+    "Mira Speaking partner"
+  ]
+}

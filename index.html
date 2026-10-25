@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rudra Chakraborty — Interactive Biomedical &amp; AI Engineering Portfolio</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #060b14;
+      color: #f1f5f9;
+      overflow-x: hidden;
+    }
+    .font-display {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    /* Annotate Mode Highlight Styles */
+    body.annotate-mode-active {
+      cursor: crosshair;
+    }
+    body.annotate-mode-active [data-annotatable]:hover {
+      outline: 2px dashed #22d3ee !important;
+      outline-offset: 4px !important;
+      background-color: rgba(34, 211, 238, 0.08) !important;
+      position: relative;
+      transition: all 0.15s ease;
+    }
+    .annotate-selected-target {
+      outline: 2px solid #f59e0b !important;
+      outline-offset: 4px !important;
+      box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.25) !important;
+    }
+    .annotated-badge-indicator {
+      position: relative;
+    }
+    .annotated-badge-indicator::after {
+      content: '✓ Edited';
+      position: absolute;
+      top: -10px;
+      right: -6px;
+      background: #10b981;
+      color: #022c22;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: 9999px;
+      pointer-events: none;
+      opacity: 0.9;
+      z-index: 20;
+    }
+    body.published-view .studio-only {
+      display: none !important;
+    }
+    body.published-view .annotated-badge-indicator::after {
+      display: none !important;
+    }
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0b1322;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #334155;
+    }
+    .glass-panel {
+      background: rgba(15, 23, 42, 0.78);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(51, 65, 85, 0.6);
+    }
+  </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:Inter,  system-ui, sans-serif;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.-inset-1{inset:-0.25rem}.inset-0{inset:0px}.inset-x-3{left:0.75rem;right:0.75rem}.bottom-3{bottom:0.75rem}.left-3{left:0.75rem}.top-0{top:0px}.top-2\.5{top:0.625rem}.bottom-5{bottom:1.25rem}.right-5{right:1.25rem}.right-3{right:0.75rem}.top-3{top:0.75rem}.z-10{z-index:10}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.mb-1{margin-bottom:0.25rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mt-0\.5{margin-top:0.125rem}.mt-1{margin-top:0.25rem}.mt-2{margin-top:0.5rem}.mt-3{margin-top:0.75rem}.mt-4{margin-top:1rem}.mt-5{margin-top:1.25rem}.mr-1{margin-right:0.25rem}.line-clamp-4{overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4}.block{display:block}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.aspect-\[4\/4\.3\]{aspect-ratio:4/4.3}.aspect-\[4\/3\]{aspect-ratio:4/3}.h-10{height:2.5rem}.h-2{height:0.5rem}.h-28{height:7rem}.h-3\.5{height:0.875rem}.h-4{height:1rem}.h-full{height:100%}.h-2\.5{height:0.625rem}.h-8{height:2rem}.h-\[500px\]{height:500px}.h-72{height:18rem}.max-h-\[90vh\]{max-height:90vh}.max-h-80{max-height:20rem}.max-h-40{max-height:10rem}.min-h-screen{min-height:100vh}.w-10{width:2.5rem}.w-2{width:0.5rem}.w-28{width:7rem}.w-3\.5{width:0.875rem}.w-4{width:1rem}.w-56{width:14rem}.w-full{width:100%}.w-2\.5{width:0.625rem}.w-8{width:2rem}.w-80{width:20rem}.min-w-0{min-width:0px}.max-w-2xl{max-width:42rem}.max-w-7xl{max-width:80rem}.max-w-sm{max-width:24rem}.max-w-xl{max-width:36rem}.max-w-4xl{max-width:56rem}.max-w-lg{max-width:32rem}.max-w-md{max-width:28rem}.flex-1{flex:1 1 0%}.shrink-0{flex-shrink:0}@keyframes pulse{50%{opacity:.5}}.animate-pulse{animation:pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite}.cursor-pointer{cursor:pointer}.list-disc{list-style-type:disc}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:0.25rem}.gap-1\.5{gap:0.375rem}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.space-y-1\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.375rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.375rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.25rem * var(--tw-space-y-reverse))}.space-y-1 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.25rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.overflow-y-auto{overflow-y:auto}.scroll-smooth{scroll-behavior:smooth}.truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.break-all{word-break:break-all}.rounded{border-radius:0.25rem}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-md{border-radius:0.375rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-2{border-width:2px}.border-b{border-bottom-width:1px}.border-l-4{border-left-width:4px}.border-t{border-top-width:1px}.border-l{border-left-width:1px}.border-dashed{border-style:dashed}.border-amber-400\/50{border-color:rgb(251 191 36 / 0.5)}.border-amber-500\/30{border-color:rgb(245 158 11 / 0.3)}.border-amber-500\/40{border-color:rgb(245 158 11 / 0.4)}.border-cyan-400\/50{border-color:rgb(34 211 238 / 0.5)}.border-cyan-500\/30{border-color:rgb(6 182 212 / 0.3)}.border-cyan-500\/40{border-color:rgb(6 182 212 / 0.4)}.border-emerald-500\/30{border-color:rgb(16 185 129 / 0.3)}.border-slate-700{--tw-border-opacity:1;border-color:rgb(51 65 85 / var(--tw-border-opacity, 1))}.border-slate-700\/80{border-color:rgb(51 65 85 / 0.8)}.border-slate-700\/90{border-color:rgb(51 65 85 / 0.9)}.border-slate-800{--tw-border-opacity:1;border-color:rgb(30 41 59 / var(--tw-border-opacity, 1))}.border-slate-800\/80{border-color:rgb(30 41 59 / 0.8)}.border-amber-400{--tw-border-opacity:1;border-color:rgb(251 191 36 / var(--tw-border-opacity, 1))}.border-rose-500\/30{border-color:rgb(244 63 94 / 0.3)}.border-sky-500\/30{border-color:rgb(14 165 233 / 0.3)}.border-cyan-500\/50{border-color:rgb(6 182 212 / 0.5)}.border-l-amber-400{--tw-border-opacity:1;border-left-color:rgb(251 191 36 / var(--tw-border-opacity, 1))}.border-l-cyan-400{--tw-border-opacity:1;border-left-color:rgb(34 211 238 / var(--tw-border-opacity, 1))}.border-l-emerald-400{--tw-border-opacity:1;border-left-color:rgb(52 211 153 / var(--tw-border-opacity, 1))}.border-l-purple-400{--tw-border-opacity:1;border-left-color:rgb(192 132 252 / var(--tw-border-opacity, 1))}.bg-amber-400{--tw-bg-opacity:1;background-color:rgb(251 191 36 / var(--tw-bg-opacity, 1))}.bg-amber-500\/10{background-color:rgb(245 158 11 / 0.1)}.bg-amber-500\/15{background-color:rgb(245 158 11 / 0.15)}.bg-cyan-400{--tw-bg-opacity:1;background-color:rgb(34 211 238 / var(--tw-bg-opacity, 1))}.bg-cyan-500{--tw-bg-opacity:1;background-color:rgb(6 182 212 / var(--tw-bg-opacity, 1))}.bg-cyan-500\/10{background-color:rgb(6 182 212 / 0.1)}.bg-cyan-500\/15{background-color:rgb(6 182 212 / 0.15)}.bg-cyan-950\/70{background-color:rgb(8 51 68 / 0.7)}.bg-emerald-400{--tw-bg-opacity:1;background-color:rgb(52 211 153 / var(--tw-bg-opacity, 1))}.bg-emerald-500\/15{background-color:rgb(16 185 129 / 0.15)}.bg-slate-800{--tw-bg-opacity:1;background-color:rgb(30 41 59 / var(--tw-bg-opacity, 1))}.bg-slate-900{--tw-bg-opacity:1;background-color:rgb(15 23 42 / var(--tw-bg-opacity, 1))}.bg-slate-900\/30{background-color:rgb(15 23 42 / 0.3)}.bg-slate-900\/90{background-color:rgb(15 23 42 / 0.9)}.bg-slate-950\/60{background-color:rgb(2 6 23 / 0.6)}.bg-slate-950\/80{background-color:rgb(2 6 23 / 0.8)}.bg-slate-950\/90{background-color:rgb(2 6 23 / 0.9)}.bg-slate-950\/95{background-color:rgb(2 6 23 / 0.95)}.bg-amber-500\/20{background-color:rgb(245 158 11 / 0.2)}.bg-cyan-500\/20{background-color:rgb(6 182 212 / 0.2)}.bg-emerald-500{--tw-bg-opacity:1;background-color:rgb(16 185 129 / var(--tw-bg-opacity, 1))}.bg-emerald-500\/20{background-color:rgb(16 185 129 / 0.2)}.bg-rose-500\/20{background-color:rgb(244 63 94 / 0.2)}.bg-sky-500\/20{background-color:rgb(14 165 233 / 0.2)}.bg-slate-950{--tw-bg-opacity:1;background-color:rgb(2 6 23 / var(--tw-bg-opacity, 1))}.bg-slate-950\/85{background-color:rgb(2 6 23 / 0.85)}.bg-slate-800\/90{background-color:rgb(30 41 59 / 0.9)}.bg-slate-950\/25{background-color:rgb(2 6 23 / 0.25)}.bg-black{--tw-bg-opacity:1;background-color:rgb(0 0 0 / var(--tw-bg-opacity, 1))}.bg-\[radial-gradient\(ellipse_at_top_right\2c _var\(--tw-gradient-stops\)\)\]{background-image:radial-gradient(ellipse at top right, var(--tw-gradient-stops))}.bg-gradient-to-b{background-image:linear-gradient(to bottom, var(--tw-gradient-stops))}.bg-gradient-to-br{background-image:linear-gradient(to bottom right, var(--tw-gradient-stops))}.bg-gradient-to-r{background-image:linear-gradient(to right, var(--tw-gradient-stops))}.bg-gradient-to-tr{background-image:linear-gradient(to top right, var(--tw-gradient-stops))}.from-cyan-400{--tw-gradient-from:#22d3ee var(--tw-gradient-from-position);--tw-gradient-to:rgb(34 211 238 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-cyan-500{--tw-gradient-from:#06b6d4 var(--tw-gradient-from-position);--tw-gradient-to:rgb(6 182 212 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-cyan-500\/20{--tw-gradient-from:rgb(6 182 212 / 0.2) var(--tw-gradient-from-position);--tw-gradient-to:rgb(6 182 212 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-cyan-500\/40{--tw-gradient-from:rgb(6 182 212 / 0.4) var(--tw-gradient-from-position);--tw-gradient-to:rgb(6 182 212 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-cyan-900\/25{--tw-gradient-from:rgb(22 78 99 / 0.25) var(--tw-gradient-from-position);--tw-gradient-to:rgb(22 78 99 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-slate-800{--tw-gradient-from:#1e293b var(--tw-gradient-from-position);--tw-gradient-to:rgb(30 41 59 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.via-emerald-500\/30{--tw-gradient-to:rgb(16 185 129 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), rgb(16 185 129 / 0.3) var(--tw-gradient-via-position), var(--tw-gradient-to)}.via-slate-900{--tw-gradient-to:rgb(15 23 42 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #0f172a var(--tw-gradient-via-position), var(--tw-gradient-to)}.via-slate-950{--tw-gradient-to:rgb(2 6 23 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #020617 var(--tw-gradient-via-position), var(--tw-gradient-to)}.via-teal-300{--tw-gradient-to:rgb(94 234 212 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #5eead4 var(--tw-gradient-via-position), var(--tw-gradient-to)}.to-emerald-400{--tw-gradient-to:#34d399 var(--tw-gradient-to-position)}.to-emerald-500{--tw-gradient-to:#10b981 var(--tw-gradient-to-position)}.to-emerald-500\/20{--tw-gradient-to:rgb(16 185 129 / 0.2) var(--tw-gradient-to-position)}.to-indigo-500\/40{--tw-gradient-to:rgb(99 102 241 / 0.4) var(--tw-gradient-to-position)}.to-slate-950{--tw-gradient-to:#020617 var(--tw-gradient-to-position)}.bg-clip-text{-webkit-background-clip:text;background-clip:text}.object-cover{object-fit:cover}.p-3\.5{padding:0.875rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.p-2{padding:0.5rem}.p-3{padding:0.75rem}.p-5{padding:1.25rem}.px-1\.5{padding-left:0.375rem;padding-right:0.375rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-2\.5{padding-left:0.625rem;padding-right:0.625rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-3\.5{padding-left:0.875rem;padding-right:0.875rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-12{padding-top:3rem;padding-bottom:3rem}.py-14{padding-top:3.5rem;padding-bottom:3.5rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-4{padding-top:1rem;padding-bottom:1rem}.px-1{padding-left:0.25rem;padding-right:0.25rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-3\.5{padding-top:0.875rem;padding-bottom:0.875rem}.pb-3{padding-bottom:0.75rem}.pl-4{padding-left:1rem}.pl-9{padding-left:2.25rem}.pr-3{padding-right:0.75rem}.pt-2{padding-top:0.5rem}.pt-3{padding-top:0.75rem}.pt-4{padding-top:1rem}.pb-2{padding-bottom:0.5rem}.pl-5{padding-left:1.25rem}.pt-1{padding-top:0.25rem}.pb-4{padding-bottom:1rem}.text-center{text-align:center}.text-right{text-align:right}.font-display{font-family:Space Grotesk, Inter, sans-serif}.font-mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-semibold{font-weight:600}.font-normal{font-weight:400}.uppercase{text-transform:uppercase}.italic{font-style:italic}.leading-\[1\.12\]{line-height:1.12}.leading-relaxed{line-height:1.625}.leading-snug{line-height:1.375}.tracking-tight{letter-spacing:-0.025em}.tracking-wider{letter-spacing:0.05em}.text-amber-200{--tw-text-opacity:1;color:rgb(253 230 138 / var(--tw-text-opacity, 1))}.text-amber-300{--tw-text-opacity:1;color:rgb(252 211 77 / var(--tw-text-opacity, 1))}.text-amber-400{--tw-text-opacity:1;color:rgb(251 191 36 / var(--tw-text-opacity, 1))}.text-cyan-300{--tw-text-opacity:1;color:rgb(103 232 249 / var(--tw-text-opacity, 1))}.text-cyan-300\/90{color:rgb(103 232 249 / 0.9)}.text-cyan-400{--tw-text-opacity:1;color:rgb(34 211 238 / var(--tw-text-opacity, 1))}.text-emerald-300{--tw-text-opacity:1;color:rgb(110 231 183 / var(--tw-text-opacity, 1))}.text-emerald-400{--tw-text-opacity:1;color:rgb(52 211 153 / var(--tw-text-opacity, 1))}.text-purple-300{--tw-text-opacity:1;color:rgb(216 180 254 / var(--tw-text-opacity, 1))}.text-purple-400{--tw-text-opacity:1;color:rgb(192 132 252 / var(--tw-text-opacity, 1))}.text-sky-400{--tw-text-opacity:1;color:rgb(56 189 248 / var(--tw-text-opacity, 1))}.text-slate-200{--tw-text-opacity:1;color:rgb(226 232 240 / var(--tw-text-opacity, 1))}.text-slate-300{--tw-text-opacity:1;color:rgb(203 213 225 / var(--tw-text-opacity, 1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184 / var(--tw-text-opacity, 1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139 / var(--tw-text-opacity, 1))}.text-slate-950{--tw-text-opacity:1;color:rgb(2 6 23 / var(--tw-text-opacity, 1))}.text-transparent{color:transparent}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-rose-300{--tw-text-opacity:1;color:rgb(253 164 175 / var(--tw-text-opacity, 1))}.text-sky-300{--tw-text-opacity:1;color:rgb(125 211 252 / var(--tw-text-opacity, 1))}.text-rose-400{--tw-text-opacity:1;color:rgb(251 113 133 / var(--tw-text-opacity, 1))}.underline{-webkit-text-decoration-line:underline;text-decoration-line:underline}.placeholder-slate-500::placeholder{--tw-placeholder-opacity:1;color:rgb(100 116 139 / var(--tw-placeholder-opacity, 1))}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-inner{--tw-shadow:inset 0 2px 4px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:inset 0 2px 4px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow{--tw-shadow:0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-cyan-500\/20{--tw-shadow-color:rgb(6 182 212 / 0.2);--tw-shadow:var(--tw-shadow-colored)}.blur-xl{--tw-blur:blur(24px);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur-md{--tw-backdrop-blur:blur(12px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-500{transition-duration:500ms}.selection\:bg-cyan-500\/30 *::selection{background-color:rgb(6 182 212 / 0.3)}.selection\:text-cyan-200 *::selection{--tw-text-opacity:1;color:rgb(165 243 252 / var(--tw-text-opacity, 1))}.selection\:bg-cyan-500\/30::selection{background-color:rgb(6 182 212 / 0.3)}.selection\:text-cyan-200::selection{--tw-text-opacity:1;color:rgb(165 243 252 / var(--tw-text-opacity, 1))}.hover\:border-cyan-400\/60:hover{border-color:rgb(34 211 238 / 0.6)}.hover\:border-cyan-500\/40:hover{border-color:rgb(6 182 212 / 0.4)}.hover\:bg-amber-500\/25:hover{background-color:rgb(245 158 11 / 0.25)}.hover\:bg-cyan-400:hover{--tw-bg-opacity:1;background-color:rgb(34 211 238 / var(--tw-bg-opacity, 1))}.hover\:bg-cyan-500\/20:hover{background-color:rgb(6 182 212 / 0.2)}.hover\:bg-slate-700:hover{--tw-bg-opacity:1;background-color:rgb(51 65 85 / var(--tw-bg-opacity, 1))}.hover\:bg-slate-800:hover{--tw-bg-opacity:1;background-color:rgb(30 41 59 / var(--tw-bg-opacity, 1))}.hover\:bg-slate-800\/70:hover{background-color:rgb(30 41 59 / 0.7)}.hover\:bg-slate-900:hover{--tw-bg-opacity:1;background-color:rgb(15 23 42 / var(--tw-bg-opacity, 1))}.hover\:bg-amber-300:hover{--tw-bg-opacity:1;background-color:rgb(252 211 77 / var(--tw-bg-opacity, 1))}.hover\:bg-amber-500\/30:hover{background-color:rgb(245 158 11 / 0.3)}.hover\:bg-cyan-500\/30:hover{background-color:rgb(6 182 212 / 0.3)}.hover\:bg-emerald-400:hover{--tw-bg-opacity:1;background-color:rgb(52 211 153 / var(--tw-bg-opacity, 1))}.hover\:bg-emerald-500\/30:hover{background-color:rgb(16 185 129 / 0.3)}.hover\:bg-rose-500\/20:hover{background-color:rgb(244 63 94 / 0.2)}.hover\:bg-rose-500\/30:hover{background-color:rgb(244 63 94 / 0.3)}.hover\:from-cyan-400:hover{--tw-gradient-from:#22d3ee var(--tw-gradient-from-position);--tw-gradient-to:rgb(34 211 238 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.hover\:to-emerald-400:hover{--tw-gradient-to:#34d399 var(--tw-gradient-to-position)}.hover\:text-cyan-300:hover{--tw-text-opacity:1;color:rgb(103 232 249 / var(--tw-text-opacity, 1))}.hover\:text-emerald-300:hover{--tw-text-opacity:1;color:rgb(110 231 183 / var(--tw-text-opacity, 1))}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.hover\:text-rose-300:hover{--tw-text-opacity:1;color:rgb(253 164 175 / var(--tw-text-opacity, 1))}.focus\:border-cyan-400:focus{--tw-border-opacity:1;border-color:rgb(34 211 238 / var(--tw-border-opacity, 1))}.focus\:border-amber-400:focus{--tw-border-opacity:1;border-color:rgb(251 191 36 / var(--tw-border-opacity, 1))}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.group:hover .group-hover\:scale-105{--tw-scale-x:1.05;--tw-scale-y:1.05;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@media (min-width: 640px){.sm\:w-64{width:16rem}.sm\:w-96{width:24rem}.sm\:w-48{width:12rem}.sm\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.sm\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.sm\:flex-row{flex-direction:row}.sm\:items-center{align-items:center}.sm\:gap-2{gap:0.5rem}.sm\:p-10{padding:2.5rem}.sm\:p-5{padding:1.25rem}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:py-16{padding-top:4rem;padding-bottom:4rem}.sm\:text-2xl{font-size:1.5rem;line-height:2rem}.sm\:text-3xl{font-size:1.875rem;line-height:2.25rem}.sm\:text-4xl{font-size:2.25rem;line-height:2.5rem}.sm\:text-5xl{font-size:3rem;line-height:1}.sm\:text-lg{font-size:1.125rem;line-height:1.75rem}.sm\:text-sm{font-size:0.875rem;line-height:1.25rem}}@media (min-width: 768px){.md\:col-span-5{grid-column:span 5 / span 5}.md\:col-span-7{grid-column:span 7 / span 7}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:grid-cols-12{grid-template-columns:repeat(12, minmax(0, 1fr))}.md\:flex-row{flex-direction:row}.md\:items-end{align-items:flex-end}}@media (min-width: 1024px){.lg\:col-span-5{grid-column:span 5 / span 5}.lg\:col-span-7{grid-column:span 7 / span 7}.lg\:grid-cols-12{grid-template-columns:repeat(12, minmax(0, 1fr))}.lg\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.lg\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.lg\:gap-12{gap:3rem}.lg\:py-20{padding-top:5rem;padding-bottom:5rem}.lg\:text-6xl{font-size:3.75rem;line-height:1}}</style>
+<style>.hidden{display:none!important}#visitor-project-desc{white-space:pre-wrap}.file-preview{width:100%;max-height:520px;object-fit:contain;border-radius:12px;background:#020617}.file-panel{padding:16px;border:1px solid #334155;border-radius:16px;background:#020617}.file-heading{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-bottom:12px;font-size:13px;color:#e2e8f0}.file-download{color:#67e8f9;text-decoration:underline}.visitor-tag{font-size:11px;padding:4px 8px;border-radius:6px;background:#1e293b;color:#cbd5e1}</style></head>
+<body class="min-h-screen flex flex-col selection:bg-cyan-500/30 selection:text-cyan-200 published-view">
+
+
+  <header class="border-b border-slate-800/80 bg-slate-950/60 backdrop-blur-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-wrap items-center justify-between gap-4">
+      <a href="#hero-section" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-emerald-500 flex items-center justify-center text-slate-950 font-display font-bold text-lg shadow-md">
+          RC
+        </div>
+        <div>
+          <span class="font-display font-bold text-base sm:text-lg text-white tracking-tight block">Rudra Chakraborty</span>
+          <span class="text-xs text-cyan-400 block">Biomedical Engineering · AI &amp; Soft Robotics</span>
+        </div>
+      </a>
+
+      <nav class="flex items-center flex-wrap gap-1 sm:gap-2 text-xs sm:text-sm">
+        <a href="#hero-section" class="px-3 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/70 transition">Overview</a>
+        <a href="#projects-section" class="px-3 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/70 transition">Portfolio Folders (10)</a>
+        <a href="#research-section" class="px-3 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/70 transition">Thesis &amp; Publications</a>
+        <a href="#skills-section" class="px-3 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/70 transition">Skills &amp; CV</a>
+        <a href="#contact-section" class="px-3 py-1.5 rounded-lg text-cyan-300 bg-cyan-500/10 border border-cyan-500/30 hover:bg-cyan-500/20 transition">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="flex-1">
+    <section id="hero-section" class="relative py-12 sm:py-16 lg:py-20 overflow-hidden border-b border-slate-800/80">
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-cyan-900/25 via-slate-950 to-slate-950 pointer-events-none"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/90 border border-slate-700/80 text-xs text-cyan-300">
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              <span>B.Sc. in Biomedical Engineering (CUET) · Research Assistant · Open to Global Research &amp; AI Roles</span>
+            </div>
+
+            <h1 class="font-display text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.12]" style="text-align:left;">Building Intelligent Systems with <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-emerald-400">Robotics, AI, Signal Processing &amp; Automation.</span></h1>
+
+            <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl" style="text-align:justify;text-justify:inter-word;">I’m Rudra Chakraborty, a Biomedical Engineer and Research Assistant at CUET. I develop soft robotic rehabilitation devices, machine learning models for biomedical signals and images, and interactive AI applications. From sensor design and embedded systems to web development and n8n automation, I bring hardware, software, and research together to solve practical problems.</p>
+
+            
+
+            <div class="flex flex-wrap items-center gap-3 pt-2">
+              <a href="#projects-section" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm bg-cyan-500 hover:bg-cyan-400 text-slate-950 shadow-lg shadow-cyan-500/20 transition">
+                <span>Explore Project Folders</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+              </a>
+
+              <button id="btn-view-resume-modal" type="button" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-medium text-sm bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 transition">
+                <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                <span>View Resume PDF</span>
+              </button>
+
+              </div>
+          </div>
+
+          <div class="lg:col-span-5 flex flex-col items-center">
+            <div class="relative w-full max-w-sm">
+              <div class="absolute -inset-1 rounded-3xl bg-gradient-to-tr from-cyan-500/40 via-emerald-500/30 to-indigo-500/40 blur-xl pointer-events-none"></div>
+              <div class="relative glass-panel rounded-3xl p-4 sm:p-5 border border-slate-700/90 shadow-2xl">
+                <div class="relative aspect-[4/4.3] w-full rounded-2xl overflow-hidden bg-gradient-to-b from-slate-800 via-slate-900 to-slate-950 border border-slate-700 flex flex-col items-center justify-center group">
+                  <div id="profile-default-placeholder" class="flex flex-col items-center justify-center text-center p-6 hidden">
+                    <div class="w-28 h-28 rounded-full bg-gradient-to-tr from-cyan-500/20 to-emerald-500/20 border-2 border-cyan-400/50 flex items-center justify-center mb-4 shadow-inner">
+                      <span class="font-display text-4xl font-bold text-cyan-300">RC</span>
+                    </div>
+                    <p class="font-display font-bold text-lg text-white">Rudra Chakraborty</p>
+                    <p class="text-xs text-slate-400 mt-1">Biomedical Engineer · CUET ('26)</p>
+                    </div>
+
+                  <img id="profile-uploaded-img" src="assets/a14faf015484887c8df2ac906a452ac4ad0690e2602494a434a5467203693a72.png" alt="Rudra Chakraborty Portrait" class="w-full h-full object-cover">
+
+                  </div>
+
+                <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-slate-300">
+                  <div class="flex items-center gap-1.5">
+                    <span class="text-cyan-400">📍</span>
+                    <span>Chittagong, Bangladesh</span>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <a href="mailto:rudrachakraborty589@gmail.com" class="hover:text-cyan-300 underline">Email</a>
+                    <a href="https://github.com/rudra330" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-300 underline">GitHub</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="projects-section" class="py-14 sm:py-16 border-b border-slate-800/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+          <div>
+            <h2 class="font-display text-2xl sm:text-4xl font-bold text-white">
+              Engineering &amp; Research Portfolio Folders
+            </h2>
+            </div>
+
+          <div class="flex flex-wrap items-center gap-2">
+            <div class="relative">
+              <input id="input-project-search" type="text" placeholder="Search projects, ESP32, EEG, n8n..." class="w-56 sm:w-64 bg-slate-900/90 border border-slate-700 rounded-xl pl-9 pr-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400">
+              <svg class="w-4 h-4 text-slate-500 absolute left-3 top-2.5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div id="folder-tabs-container" class="flex items-center gap-2 overflow-x-auto pb-3 mb-6"><button type="button" class="shrink-0 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold bg-cyan-500 text-slate-950 shadow-md transition">
+            <span>📁 All Folders</span>
+            <span class="px-1.5 py-0.5 rounded-full text-[10px] bg-slate-950/25 text-slate-950 font-bold">10</span>
+          </button><button type="button" class="shrink-0 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-medium bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">
+            <span>📁 Hand rehab(Robotics) project</span>
+            <span class="px-1.5 py-0.5 rounded-full text-[10px] bg-slate-800 text-slate-400">1</span>
+          </button><button type="button" class="shrink-0 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-medium bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">
+            <span>📁 Tele rehab app</span>
+            <span class="px-1.5 py-0.5 rounded-full text-[10px] bg-slate-800 text-slate-400">1</span>
+          </button><button type="button" class="shrink-0 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-medium bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">
+            <span>📁 EEG Project</span>
+            <span class="px-1.5 py-0.5 rounded-full text-[10px] bg-slate-800 text-slate-400">1</span>
+          </button><button type="button" class="shrink-0 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-medium bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">
+            <span>📁 Image processing project</span>
+            <span class="px-1.5 py-0.5 rounded-full text-[10px] bg-slate-800 text-slate-400">1</span>
+          </button><button type="button" class="shrink-0 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-medium bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">
+            <span>📁 Body sensor network project</span>
+            <span class="px-1.5 py-0.5 rounded-full text-[10px] bg-slate-800 text-slate-400">1</span>
+          </button><button type="button" class="shrink-0 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-medium bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">
+            <span>📁 Iot enable environment monitoring</span>
+            <span class="px-1.5 py-0.5 rounded-full text-[10px] bg-slate-800 text-slate-400">1</span>
+          </button><button type="button" class="shrink-0 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-medium bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">
+            <span>📁 N8n projects</span>
+            <span class="px-1.5 py-0.5 rounded-full text-[10px] bg-slate-800 text-slate-400">1</span>
+          </button><button type="button" class="shrink-0 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-medium bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">
+            <span>📁 Simulation project</span>
+            <span class="px-1.5 py-0.5 rounded-full text-[10px] bg-slate-800 text-slate-400">1</span>
+          </button><button type="button" class="shrink-0 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-medium bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">
+            <span>📁 Certificates</span>
+            <span class="px-1.5 py-0.5 rounded-full text-[10px] bg-slate-800 text-slate-400">1</span>
+          </button><button type="button" class="shrink-0 inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-medium bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition">
+            <span>📁 Mira Speaking partner</span>
+            <span class="px-1.5 py-0.5 rounded-full text-[10px] bg-slate-800 text-slate-400">1</span>
+          </button></div>
+
+        <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"><article data-project-id="proj-custom-1792953537503" class="glass-panel rounded-2xl overflow-hidden flex flex-col justify-between border border-slate-800 hover:border-cyan-500/40 transition group shadow-lg"><div>
+              <div class="relative aspect-[4/3] w-full bg-slate-950 overflow-hidden border-b border-slate-800">
+                <img src="assets/2928cd8fd3d3d23cc0fbb608ddc0b2fecdfca70d3b75a838f3f000f568ceb9f7.png" alt="Speaking Partner Mira" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                <div class="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
+                  <span class="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-slate-950/85 backdrop-blur-md text-cyan-300 border border-cyan-500/30 truncate">
+                    📁 Mira Speaking partner
+                  </span>
+                  <span class="px-2 py-1 rounded-lg text-[10px] font-semibold bg-slate-950/85 text-amber-300 border border-amber-500/30">
+                    3 Files
+                  </span>
+                </div>
+              </div>
+
+              <div class="p-5 space-y-3">
+                <h3 class="font-display font-bold text-lg text-white leading-snug">
+                  Speaking Partner Mira
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed line-clamp-4">
+                  Mira is an AI-powered speaking partner featuring an interactive 3D avatar that responds to users' questions and engages in natural conversations. It is designed to help users improve their English-speaking skills, fluency, and confidence through regular practice.
+
+Many students and individuals can understand, read, and write English but struggle to speak it fluently and confidently. Mira aims to bridge this gap by providing a friendly, comfortable, and judgment-free environment where users can practice speaking without hesitation or fear of making mistakes.
+
+With its gentle voice, friendly tone, and clear, well-structured responses, Mira makes English learning more engaging, interactive, and effective. Through continuous conversations, users can gradually overcome their fear of speaking English and develop better communication skills.
+                </p>
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                  <span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">3D avatar</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">TypeScript</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">Next.js + React</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">WebRTC</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="px-5 py-3.5 bg-slate-950/60 border-t border-slate-800/80 flex items-center justify-between gap-2">
+              <button type="button" data-open-modal="proj-custom-1792953537503" class="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition">
+                <span>Open Media &amp; Details</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+              </button>
+
+              </div>
+          </article><article data-project-id="proj-hand-1" class="glass-panel rounded-2xl overflow-hidden flex flex-col justify-between border border-slate-800 hover:border-cyan-500/40 transition group shadow-lg"><div>
+              <div class="relative aspect-[4/3] w-full bg-slate-950 overflow-hidden border-b border-slate-800">
+                <img src="assets/5e4a313b3ff36f2eb8421f130d9a876dba5b16e8bef030db8c8dc5c24ed660e5.png" alt="Personal Hand Rehabilitation Assistant" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                <div class="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
+                  <span class="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-slate-950/85 backdrop-blur-md text-cyan-300 border border-cyan-500/30 truncate">
+                    📁 Hand rehab(Robotics) project
+                  </span>
+                  <span class="px-2 py-1 rounded-lg text-[10px] font-semibold bg-slate-950/85 text-amber-300 border border-amber-500/30">
+                    2 Files
+                  </span>
+                </div>
+              </div>
+
+              <div class="p-5 space-y-3">
+                <h3 class="font-display font-bold text-lg text-white leading-snug">
+                  Personal Hand Rehabilitation Assistant
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed line-clamp-4">
+                  Developed a portable, home-based bilateral smart glove system for post-stroke hand rehabilitation that integrates mirror therapy with real-time sensor motion tracking and motor-assisted actuation. The healthy-hand transmitter glove uses a calibrated flex sensor on the index finger to measure bending angles and a palmar force-sensitive resistor (FSR) to detect grip force, processed by an ESP32 microcontroller and transmitted wirelessly with minimal latency. On the paralyzed-hand receiver glove, a second ESP32 and a PCA9685 motor driver control five MG996R servo motors on a custom PCB/Veroboard circuit—proportionally replicating finger flexion and triggering synchronized multi-finger grasping based on palmar grip pressure while mitigating power fluctuations and servo jitter.
+                </p>
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                  <span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">ESP32 Microcontroller (Dual Wireless)</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">Flex Sensors</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">Force-Sensitive Resistor (FSR)</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">Servo Motor MG996R</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">PCA9685 Motor Driver</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">Custom PCB &amp; Veroboard</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">Mirror Therapy</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">Stroke Rehabilitation</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="px-5 py-3.5 bg-slate-950/60 border-t border-slate-800/80 flex items-center justify-between gap-2">
+              <button type="button" data-open-modal="proj-hand-1" class="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition">
+                <span>Open Media &amp; Details</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+              </button>
+
+              </div>
+          </article><article data-project-id="proj-tele-1" class="glass-panel rounded-2xl overflow-hidden flex flex-col justify-between border border-slate-800 hover:border-cyan-500/40 transition group shadow-lg"><div>
+              <div class="relative aspect-[4/3] w-full bg-slate-950 overflow-hidden border-b border-slate-800">
+                <img src="assets/a7e10a7eed2fc2d969cd2982c64781600e0b06ed8f1c9cd8f14727a800673d57.jpg" alt="MotionMirror — WebRTC Telerehabilitation &amp; 3D Mirror Therapy App" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                <div class="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
+                  <span class="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-slate-950/85 backdrop-blur-md text-cyan-300 border border-cyan-500/30 truncate">
+                    📁 Tele rehab app
+                  </span>
+                  <span class="px-2 py-1 rounded-lg text-[10px] font-semibold bg-slate-950/85 text-amber-300 border border-amber-500/30">
+                    2 Files
+                  </span>
+                </div>
+              </div>
+
+              <div class="p-5 space-y-3">
+                <h3 class="font-display font-bold text-lg text-white leading-snug">
+                  MotionMirror — WebRTC Telerehabilitation &amp; 3D Mirror Therapy App
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed line-clamp-4">
+                  Full-stack telemedicine platform (Next.js / Firebase / WebRTC) combining real-time doctor-patient video consultations, remote pneumatic therapy controls, camera-driven individual finger tracking, and interactive 3D mirror-therapy hand visualization.
+                </p>
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                  <span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">Next.js</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">Firebase</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">WebRTC</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">MediaPipe</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">3D Hand Visualization</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">Telerehabilitation</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="px-5 py-3.5 bg-slate-950/60 border-t border-slate-800/80 flex items-center justify-between gap-2">
+              <button type="button" data-open-modal="proj-tele-1" class="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition">
+                <span>Open Media &amp; Details</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+              </button>
+
+              </div>
+          </article><article data-project-id="proj-eeg-1" class="glass-panel rounded-2xl overflow-hidden flex flex-col justify-between border border-slate-800 hover:border-cyan-500/40 transition group shadow-lg"><div>
+              <div class="relative aspect-[4/3] w-full bg-slate-950 overflow-hidden border-b border-slate-800">
+                <img src="assets/411e4e2981a9f773b87f79028780c01f587c75cce2a847ff9dc58d7201152313.png" alt="Hybrid MDM-LDA BCI Framework for Stroke Motor Imagery Classification" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                <div class="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
+                  <span class="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-slate-950/85 backdrop-blur-md text-cyan-300 border border-cyan-500/30 truncate">
+                    📁 EEG Project
+                  </span>
+                  <span class="px-2 py-1 rounded-lg text-[10px] font-semibold bg-slate-950/85 text-amber-300 border border-amber-500/30">
+                    1 File
+                  </span>
+                </div>
+              </div>
+
+              <div class="p-5 space-y-3">
+                <h3 class="font-display font-bold text-lg text-white leading-snug">
+                  Hybrid MDM-LDA BCI Framework for Stroke Motor Imagery Classification
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed line-clamp-4">
+                  First-author IEEE conference research (QPAIN / ICCIT 2026) decoding motor imagery EEG from 50 stroke patients. Extracted 449 Riemannian covariance tangent-space and inter-hemispheric coherence features across 19 sub-bands (8–30 Hz), achieving 82.0% mean accuracy (κ = 0.62) and 81.14% macro F1.
+                </p>
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                  <span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">EEG / BCI</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">Riemannian Geometry</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">MDM-LDA</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">MATLAB</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">EEGLAB</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">Python</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">XAI</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="px-5 py-3.5 bg-slate-950/60 border-t border-slate-800/80 flex items-center justify-between gap-2">
+              <button type="button" data-open-modal="proj-eeg-1" class="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition">
+                <span>Open Media &amp; Details</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+              </button>
+
+              </div>
+          </article><article data-project-id="proj-img-1" class="glass-panel rounded-2xl overflow-hidden flex flex-col justify-between border border-slate-800 hover:border-cyan-500/40 transition group shadow-lg"><div>
+              <div class="relative aspect-[4/3] w-full bg-slate-950 overflow-hidden border-b border-slate-800">
+                <img src="assets/6b2ab3ac911c69d4fb6179ed51a72711023aa5eb2d297ab7d94bfe7605725fe5.jpg" alt="Skin Cancer Classification Using Deep Learning (EfficientNet-B2)" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                <div class="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
+                  <span class="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-slate-950/85 backdrop-blur-md text-cyan-300 border border-cyan-500/30 truncate">
+                    📁 Image processing project
+                  </span>
+                  <span class="px-2 py-1 rounded-lg text-[10px] font-semibold bg-slate-950/85 text-amber-300 border border-amber-500/30">
+                    0 Files
+                  </span>
+                </div>
+              </div>
+
+              <div class="p-5 space-y-3">
+                <h3 class="font-display font-bold text-lg text-white leading-snug">
+                  Skin Cancer Classification Using Deep Learning (EfficientNet-B2)
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed line-clamp-4">
+                  Fine-tuned a 7-class EfficientNet-B2 CNN on ~10,000 dermatoscopic images (HAM10000) using lesion-ID-based splitting to prevent data leakage, class-weighted cross-entropy, and cosine annealing. Achieved 79.63% test accuracy, 0.8075 weighted F1, and 0.9522 mean ROC-AUC.
+                </p>
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                  <span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">PyTorch</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">EfficientNet-B2</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">HAM10000</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">Medical Imaging</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">Deep Learning</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="px-5 py-3.5 bg-slate-950/60 border-t border-slate-800/80 flex items-center justify-between gap-2">
+              <button type="button" data-open-modal="proj-img-1" class="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition">
+                <span>Open Media &amp; Details</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+              </button>
+
+              </div>
+          </article><article data-project-id="proj-bsn-1" class="glass-panel rounded-2xl overflow-hidden flex flex-col justify-between border border-slate-800 hover:border-cyan-500/40 transition group shadow-lg"><div>
+              <div class="relative aspect-[4/3] w-full bg-slate-950 overflow-hidden border-b border-slate-800">
+                <img src="assets/aaace17017b460acc05ee1b8c4af3fa7720dc72e894ee13ec9a558497e2a0a7b.jpg" alt="Smart Pregnancy Pain-Relief Wearable Belt &amp; Non-Invasive Bilirubin Detector" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                <div class="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
+                  <span class="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-slate-950/85 backdrop-blur-md text-cyan-300 border border-cyan-500/30 truncate">
+                    📁 Body sensor network project
+                  </span>
+                  <span class="px-2 py-1 rounded-lg text-[10px] font-semibold bg-slate-950/85 text-amber-300 border border-amber-500/30">
+                    2 Files
+                  </span>
+                </div>
+              </div>
+
+              <div class="p-5 space-y-3">
+                <h3 class="font-display font-bold text-lg text-white leading-snug">
+                  Smart Pregnancy Pain-Relief Wearable Belt &amp; Non-Invasive Bilirubin Detector
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed line-clamp-4">
+                  ESP32 wearable Body Sensor Network integrating FSR pressure and DHT22 thermal sensors with dual vibration actuators and a MIT App Inventor Wi-Fi control app (~3,500 BDT prototype). Also developed a non-invasive optical PPG bilirubin detector using an OPT101P photodiode and tri-wavelength light.
+                </p>
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                  <span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">Body Sensor Network</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">ESP32</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">FSR &amp; DHT22</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">OPT101P PPG</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">MIT App Inventor</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="px-5 py-3.5 bg-slate-950/60 border-t border-slate-800/80 flex items-center justify-between gap-2">
+              <button type="button" data-open-modal="proj-bsn-1" class="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition">
+                <span>Open Media &amp; Details</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+              </button>
+
+              </div>
+          </article><article data-project-id="proj-iot-1" class="glass-panel rounded-2xl overflow-hidden flex flex-col justify-between border border-slate-800 hover:border-cyan-500/40 transition group shadow-lg"><div>
+              <div class="relative aspect-[4/3] w-full bg-slate-950 overflow-hidden border-b border-slate-800">
+                <img src="assets/32f93685498a58b98bbe20df05da79132e4ded12d546662508968a8f116ac602.svg" alt="IoT Hospital Critical-Care Environmental Monitoring System" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                <div class="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
+                  <span class="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-slate-950/85 backdrop-blur-md text-cyan-300 border border-cyan-500/30 truncate">
+                    📁 Iot enable environment monitoring
+                  </span>
+                  <span class="px-2 py-1 rounded-lg text-[10px] font-semibold bg-slate-950/85 text-amber-300 border border-amber-500/30">
+                    2 Files
+                  </span>
+                </div>
+              </div>
+
+              <div class="p-5 space-y-3">
+                <h3 class="font-display font-bold text-lg text-white leading-snug">
+                  IoT Hospital Critical-Care Environmental Monitoring System
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed line-clamp-4">
+                  ESP32-based clinical telemetry node acquiring real-time temperature, humidity (DHT22), and air-quality/gas (MQ-135) measurements with live Blynk cloud dashboards and automated threshold alerting for hospital ICUs and wards.
+                </p>
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                  <span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">IoT Healthcare</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">ESP32</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">DHT22</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">MQ-135</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">Blynk Cloud</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">Alerting</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="px-5 py-3.5 bg-slate-950/60 border-t border-slate-800/80 flex items-center justify-between gap-2">
+              <button type="button" data-open-modal="proj-iot-1" class="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition">
+                <span>Open Media &amp; Details</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+              </button>
+
+              </div>
+          </article><article data-project-id="proj-n8n-1" class="glass-panel rounded-2xl overflow-hidden flex flex-col justify-between border border-slate-800 hover:border-cyan-500/40 transition group shadow-lg"><div>
+              <div class="relative aspect-[4/3] w-full bg-slate-950 overflow-hidden border-b border-slate-800">
+                <img src="assets/0d6002927f9c72a699616b70e8514a18858ab5a9cf34ca664e36a7cdc80312c0.png" alt="Smart Email Router &amp; Weather Alert Bot with n8n" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                <div class="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
+                  <span class="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-slate-950/85 backdrop-blur-md text-cyan-300 border border-cyan-500/30 truncate">
+                    📁 N8n projects
+                  </span>
+                  <span class="px-2 py-1 rounded-lg text-[10px] font-semibold bg-slate-950/85 text-amber-300 border border-amber-500/30">
+                    2 Files
+                  </span>
+                </div>
+              </div>
+
+              <div class="p-5 space-y-3">
+                <h3 class="font-display font-bold text-lg text-white leading-snug">
+                  Smart Email Router &amp; Weather Alert Bot with n8n
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed line-clamp-4">
+                  Built two n8n automations: a Gmail-to-Telegram notifier using Gemini to summarise email subjects, and a city-based weather bot using WeatherAPI. Integrated webhooks, JavaScript logic, request validation, and formatted weather responses.
+                </p>
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                  <span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">n8n</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">Workflow Automation</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">Google Gemini</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">Gmail</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">Telegram Bot</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">WeatherAPI</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">Webhooks</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">JavaScript</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">API Integration</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">Email Automation</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">Weather Alerts</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="px-5 py-3.5 bg-slate-950/60 border-t border-slate-800/80 flex items-center justify-between gap-2">
+              <button type="button" data-open-modal="proj-n8n-1" class="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition">
+                <span>Open Media &amp; Details</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+              </button>
+
+              </div>
+          </article><article data-project-id="proj-sim-1" class="glass-panel rounded-2xl overflow-hidden flex flex-col justify-between border border-slate-800 hover:border-cyan-500/40 transition group shadow-lg"><div>
+              <div class="relative aspect-[4/3] w-full bg-slate-950 overflow-hidden border-b border-slate-800">
+                <img src="assets/b21b41e4e8a2f0f37474f1382714e96650cc60f85bc524ef48533eb9626b774e.jpg" alt="Proteus Biomedical Instrumentation &amp; MATLAB Microstrip Patch Antenna" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                <div class="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
+                  <span class="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-slate-950/85 backdrop-blur-md text-cyan-300 border border-cyan-500/30 truncate">
+                    📁 Simulation project
+                  </span>
+                  <span class="px-2 py-1 rounded-lg text-[10px] font-semibold bg-slate-950/85 text-amber-300 border border-amber-500/30">
+                    3 Files
+                  </span>
+                </div>
+              </div>
+
+              <div class="p-5 space-y-3">
+                <h3 class="font-display font-bold text-lg text-white leading-snug">
+                  Proteus Biomedical Instrumentation &amp; MATLAB Microstrip Patch Antenna
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed line-clamp-4">
+                  Designed and validated Arduino-based Heart-Rate LCD monitoring and LM35/Ultrasonic proximity simulations in Proteus, alongside MATLAB electromagnetic analysis of Microstrip Patch Antenna return loss (S11) and input impedance.
+                </p>
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                  <span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">Proteus Simulation</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">MATLAB Antenna S11</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">Arduino</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">Heart-Rate Sensor</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">LM35</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="px-5 py-3.5 bg-slate-950/60 border-t border-slate-800/80 flex items-center justify-between gap-2">
+              <button type="button" data-open-modal="proj-sim-1" class="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition">
+                <span>Open Media &amp; Details</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+              </button>
+
+              </div>
+          </article><article data-project-id="proj-cert-1" class="glass-panel rounded-2xl overflow-hidden flex flex-col justify-between border border-slate-800 hover:border-cyan-500/40 transition group shadow-lg"><div>
+              <div class="relative aspect-[4/3] w-full bg-slate-950 overflow-hidden border-b border-slate-800">
+                <img src="assets/58684305e51c242e1d032dba577a424302f3d10b0123fa2d114f7882b21b9a95.png" alt="Coursera n8n AI Agents, Healthcare GenAI &amp; Academic Honors" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                <div class="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
+                  <span class="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-slate-950/85 backdrop-blur-md text-cyan-300 border border-cyan-500/30 truncate">
+                    📁 Certificates
+                  </span>
+                  <span class="px-2 py-1 rounded-lg text-[10px] font-semibold bg-slate-950/85 text-amber-300 border border-amber-500/30">
+                    4 Files
+                  </span>
+                </div>
+              </div>
+
+              <div class="p-5 space-y-3">
+                <h3 class="font-display font-bold text-lg text-white leading-snug">
+                  Coursera n8n AI Agents, Healthcare GenAI &amp; Academic Honors
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed line-clamp-4">
+                  4 verified Coursera certifications (2026): Build AI Agents &amp; Secure API Integrations with n8n (000GDUMC1N5R), Integrate AI Models in n8n (BYVGDH30N5R5), Workflow Automation with n8n (QL0RH6HKU4UV), and GenAI for Healthcare Automation (XIZR960ZH8YL), plus CU Science Fair Best Stall Award.
+                </p>
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                  <span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">Coursera Verified</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">n8n AI Agents</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">Healthcare GenAI</span><span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-300 text-[11px]">Best Stall Award</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="px-5 py-3.5 bg-slate-950/60 border-t border-slate-800/80 flex items-center justify-between gap-2">
+              <button type="button" data-open-modal="proj-cert-1" class="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition">
+                <span>Open Media &amp; Details</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+              </button>
+
+              </div>
+          </article></div>
+
+      </div>
+    </section>
+
+    <section id="research-section" class="py-14 sm:py-16 bg-slate-900/30 border-b border-slate-800/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="mb-8">
+          <div class="text-xs font-semibold uppercase tracking-wider text-emerald-400 mb-1">Academic &amp; Clinical Research</div>
+          <h2 class="font-display text-2xl sm:text-3xl font-bold text-white">
+            Undergraduate Thesis &amp; Peer-Reviewed Publications
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div class="glass-panel rounded-2xl p-6 border border-cyan-500/30 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">
+                  B.Sc. Thesis · CUET (2025–2026)
+                </span>
+                <span class="text-xs text-slate-400">Sole Designer &amp; Developer</span>
+              </div>
+              <h3 class="font-display text-xl font-bold text-white mb-2">
+                Smart Soft Pneumatic Hand Rehabilitation System with Camera-Driven Mirror Therapy ("MotionMirror")
+              </h3>
+              <p class="text-xs text-cyan-300 mb-3">
+                Supervisor: Dr. Sumit Majumder, Assistant Professor, Dept. of Biomedical Engineering, CUET
+              </p>
+              <ul class="space-y-2 text-xs sm:text-sm text-slate-300 list-disc pl-4">
+                <li>Iteratively designed 4 soft pneumatic silicone hand actuator prototypes in SolidWorks and fabricated them via custom 3D-printed molds.</li>
+                <li>Engineered ESP32-based pneumatic valve &amp; pump control electronics coupled with MediaPipe real-time hand tracking for independent finger actuation.</li>
+                <li>Built <strong>MotionMirror</strong> (Next.js / Firebase / WebRTC) enabling remote doctor-patient video consultations, live therapy controls, and interactive 3D mirror-therapy hand visualization.</li>
+                <li>Developed a 5-channel Velostat flex-sensor Python/Arduino calibration pipeline with adaptive baselines and CSV logging.</li>
+              </ul>
+            </div>
+            <div class="mt-5 pt-4 border-t border-slate-800 flex flex-wrap items-center justify-between gap-2 text-xs">
+              <span class="text-slate-400">Clinical validation ongoing at CMCH Casualty Dept.</span>
+              <button type="button" data-open-folder="Hand rehab(Robotics) project" class="text-cyan-400 hover:text-cyan-300 font-semibold">
+                Filter Thesis Folder →
+              </button>
+            </div>
+          </div>
+
+          <div class="glass-panel rounded-2xl p-6 border border-emerald-500/30 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
+                  IEEE Conference Manuscript · 2026
+                </span>
+                <span class="text-xs text-slate-400">First-Listed Co-Author (†Equal Contrib.)</span>
+              </div>
+              <h3 class="font-display text-xl font-bold text-white mb-2">
+                "A Hybrid MDM-LDA Framework for Robust Motor Imagery Classification in Stroke Patients"
+              </h3>
+              <p class="text-xs text-emerald-300 mb-3">
+                R. Chakraborty†, M.Z.I. Mahi†, M.Z. Hasan†, and M.F.K. Khondakar (Dept. of BME, CUET)
+              </p>
+              <ul class="space-y-2 text-xs sm:text-sm text-slate-300 list-disc pl-4">
+                <li>Analyzed public 50-subject stroke patient EEG dataset across 7 temporal windows (2–6 s) and 19 frequency sub-bands (8–30 Hz).</li>
+                <li>Extracted 449 spatial covariance (Riemannian tangent-space) and inter-hemispheric coherence features with adaptive trial-level MDM + LDA selection.</li>
+                <li>Achieved <strong>82.0% mean accuracy (Cohen's κ = 0.62)</strong> and balanced right/left hand F1-score of 81.14%, outperforming prior benchmark (72.21%).</li>
+                <li>Applied explainable AI (XAI averaged LDA weights) to rank top discriminative neuro-rehabilitation channels.</li>
+              </ul>
+            </div>
+            <div class="mt-5 pt-4 border-t border-slate-800 flex flex-wrap items-center justify-between gap-2 text-xs">
+              <span class="text-slate-400">Submitted to IEEE QPAIN / ICCIT 2026</span>
+              <button type="button" data-open-folder="EEG Project" class="text-emerald-400 hover:text-emerald-300 font-semibold">
+                Filter EEG Folder →
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills-section" class="py-14 sm:py-16 border-b border-slate-800/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+          <div class="lg:col-span-7 space-y-6">
+            <div>
+              <div class="text-xs font-semibold uppercase tracking-wider text-cyan-400 mb-1">Technical Stack</div>
+              <h2 class="font-display text-2xl sm:text-3xl font-bold text-white">
+                Multidisciplinary Engineering &amp; AI Capabilities
+              </h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="glass-panel p-4 rounded-xl">
+                <h3 class="text-sm font-semibold text-cyan-300 mb-2">Programming &amp; Web Stack</h3>
+                <div class="flex flex-wrap gap-1.5 text-xs">
+                  <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-200">Python</span>
+                  <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-200">MATLAB</span>
+                  <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-200">C / C++</span>
+                  <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-200">TypeScript</span>
+                  <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-200">React &amp; Next.js</span>
+                  <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-200">Firebase &amp; WebRTC</span>
+                </div>
+              </div>
+
+              <div class="glass-panel p-4 rounded-xl">
+                <h3 class="text-sm font-semibold text-emerald-300 mb-2">AI, Deep Learning &amp; BCI</h3>
+                <div class="flex flex-wrap gap-1.5 text-xs">
+                  <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-200">PyTorch &amp; TensorFlow</span>
+                  <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-200">EfficientNet CNNs</span>
+                  <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-200">Riemannian MDM-LDA</span>
+                  <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-200">MediaPipe &amp; OpenCV</span>
+                  <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-200">EEGLAB</span>
+                  <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-200">XAI / SHAP</span>
+                </div>
+              </div>
+
+              <div class="glass-panel p-4 rounded-xl">
+                <h3 class="text-sm font-semibold text-amber-300 mb-2">Robotics, Embedded &amp; CAD</h3>
+                <div class="flex flex-wrap gap-1.5 text-xs">
+                  <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-200">Soft Pneumatic Robotics</span>
+                  <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-200">ESP32 &amp; Arduino</span>
+                  <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-200">SolidWorks &amp; 3D Molds</span>
+                  <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-200">Silicone Casting</span>
+                  <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-200">Proteus &amp; Simulink</span>
+                  <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-200">Custom PCB &amp; Velostat</span>
+                </div>
+              </div>
+
+              <div class="glass-panel p-4 rounded-xl">
+                <h3 class="text-sm font-semibold text-purple-300 mb-2">AI Automation &amp; Agentic Workflows</h3>
+                <div class="flex flex-wrap gap-1.5 text-xs">
+                  <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-200">n8n Workflow Automation</span>
+                  <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-200">Gemini Live API</span>
+                  <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-200">LangChain &amp; CrewAI</span>
+                  <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-200">Codex &amp; Cursor AI</span>
+                  <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-200">Blynk IoT &amp; MIT App Inventor</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 space-y-4">
+            <div class="text-xs font-semibold uppercase tracking-wider text-emerald-400 mb-1">Career &amp; Academic Timeline</div>
+            <h2 class="font-display text-2xl font-bold text-white mb-3">
+              Experience, Education &amp; Leadership
+            </h2>
+
+            <div class="glass-panel p-4 rounded-xl border-l-4 border-l-cyan-400">
+              <div class="flex justify-between items-start text-xs text-cyan-300 font-semibold">
+                <span>Research Assistant · Dept. of BME, CUET</span>
+                <span>Jul 2026 – Present</span>
+              </div>
+              <p class="text-xs text-slate-300 mt-1">
+                Under Dr. Sumit Majumder; conducting clinical validation of soft robotic rehabilitation with stroke patients at Chittagong Medical College &amp; Hospital (CMCH) and EEG motor imagery research.
+              </p>
+            </div>
+
+            <div class="glass-panel p-4 rounded-xl border-l-4 border-l-emerald-400">
+              <div class="flex justify-between items-start text-xs text-emerald-300 font-semibold">
+                <span>Industrial Attachment · Parkview Hospital</span>
+                <span>May 2025</span>
+              </div>
+              <p class="text-xs text-slate-300 mt-1">
+                Intensive clinical engineering attachment covering hospital operations, ICU/diagnostic medical-device ecosystems, and maintenance workflows in Chittagong.
+              </p>
+            </div>
+
+            <div class="glass-panel p-4 rounded-xl border-l-4 border-l-amber-400">
+              <div class="flex justify-between items-start text-xs text-amber-300 font-semibold">
+                <span>B.Sc. in Biomedical Engineering · CUET</span>
+                <span>2021 – 2026</span>
+              </div>
+              <p class="text-xs text-slate-300 mt-1">
+                CGPA: 3.28 / 4.00 (Student ID: 2011026) · HSC: Comilla Victoria Govt. College (GPA 5.00/5.00, 2020) · SSC: Nizmehar Model Pilot High School (GPA 5.00/5.00, 2018).
+              </p>
+            </div>
+
+            <div class="glass-panel p-4 rounded-xl border-l-4 border-l-purple-400">
+              <div class="flex justify-between items-start text-xs text-purple-300 font-semibold">
+                <span>Leadership &amp; Honors</span>
+                <span>CUET &amp; CU Science Fair</span>
+              </div>
+              <p class="text-xs text-slate-300 mt-1">
+                🏆 <strong>Best Stall Award</strong> (Chittagong University Science Fair) · <strong>Vice President</strong>, Green for Peace Club CUET · <strong>Project Development Secretary</strong>, CUET BMES · <strong>Treasurer</strong>, IEEE EMBS CUET Chapter.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="contact-section" class="py-14 sm:py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="glass-panel rounded-3xl p-6 sm:p-10 border border-slate-700/80 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7 space-y-4">
+            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">
+              Get In Touch
+            </span>
+            <h2 class="font-display text-2xl sm:text-4xl font-bold text-white">
+              Collaborate on Biomedical AI, Rehabilitation Robotics, or Graduate Research
+            </h2>
+            <p class="text-sm text-slate-300 max-w-xl">
+              Available for MS/PhD research opportunities, biomedical signal/image processing roles, and remote AI &amp; n8n workflow engineering positions.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs sm:text-sm">
+              <a href="mailto:rudrachakraborty589@gmail.com" class="glass-panel p-3.5 rounded-xl hover:border-cyan-400/60 transition flex items-center gap-3">
+                <span class="text-lg">✉️</span>
+                <div>
+                  <div class="text-slate-400 text-xs">Email</div>
+                  <div class="font-medium text-white break-all">rudrachakraborty589@gmail.com</div>
+                </div>
+              </a>
+              <a href="tel:+8801311829138" class="glass-panel p-3.5 rounded-xl hover:border-cyan-400/60 transition flex items-center gap-3">
+                <span class="text-lg">📞</span>
+                <div>
+                  <div class="text-slate-400 text-xs">Phone / WhatsApp (UTC+6)</div>
+                  <div class="font-medium text-white">+880 1311-829138</div>
+                </div>
+              </a>
+              <a href="https://github.com/rudra330" target="_blank" rel="noopener noreferrer" class="glass-panel p-3.5 rounded-xl hover:border-cyan-400/60 transition flex items-center gap-3">
+                <span class="text-lg">💻</span>
+                <div>
+                  <div class="text-slate-400 text-xs">GitHub Portfolio</div>
+                  <div class="font-medium text-cyan-300">github.com/rudra330</div>
+                </div>
+              </a>
+              
+            </div>
+          </div>
+
+          <form id="contact-form" action="https://formsubmit.co/rudrachakraborty589@gmail.com" method="POST" target="_blank" rel="noopener" class="lg:col-span-5 bg-slate-950/80 p-6 rounded-2xl border border-slate-800 space-y-4">
+            <h3 class="font-display font-bold text-base text-white">Send a Direct Inquiry</h3>
+            <div>
+              <label for="contact-name" class="block text-xs text-slate-400 mb-1">Your Name</label>
+              <input id="contact-name" name="name" type="text" autocomplete="name" placeholder="Enter your name" required="" maxlength="200" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-cyan-400" style="display:block;min-height:42px;pointer-events:auto">
+            </div>
+            <div>
+              <label for="contact-subject" class="block text-xs text-slate-400 mb-1">Subject</label>
+              <input id="contact-subject" name="_subject" type="text" placeholder="Research / AI Engineering Opportunity" required="" maxlength="200" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-cyan-400">
+            </div>
+            <div>
+              <label for="contact-message" class="block text-xs text-slate-400 mb-1">Message</label>
+              <textarea id="contact-message" name="message" rows="4" placeholder="Write your message for Rudra..." required="" maxlength="10000" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-cyan-400"></textarea>
+            </div>
+            <input type="hidden" name="_template" value="table">
+            <input id="contact-source-url" type="hidden" name="_url" value="">
+            <button id="btn-send-inquiry" type="submit" class="w-full py-2.5 rounded-xl font-semibold text-xs bg-cyan-500 hover:bg-cyan-400 text-slate-950 transition">Send Inquiry</button>
+            <p class="text-xs text-slate-400">Sends your name, subject and message to Rudra via FormSubmit. Complete any verification in the page that opens.</p>
+            <p id="contact-form-status" role="status" aria-live="polite" class="text-xs text-cyan-300"></p>
+            <p id="contact-local-help" hidden="" class="text-xs text-amber-300">To send an inquiry, open the HTTP preview with <strong>Start_Portfolio_Preview.cmd</strong>, then use <a href="http://127.0.0.1:8766/" class="underline">the local preview</a>.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-800/80 py-6 text-center text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 flex flex-wrap items-center justify-between gap-2">
+      <span>© 2026 Rudra Chakraborty · Department of Biomedical Engineering, CUET.</span>
+      </div>
+  </footer>
+
+  <div id="resume-viewer-modal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4 hidden">
+    <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-4xl w-full max-h-[90vh] flex flex-col overflow-hidden shadow-2xl">
+      <div class="px-6 py-4 border-b border-slate-800 flex flex-wrap items-center justify-between gap-2">
+        <div>
+          <h3 class="font-display text-lg font-bold text-white">Rudra_Chakraborty_Resume(Final).pdf — Interactive CV &amp; Resume</h3>
+          </div>
+        <div class="flex items-center gap-2">
+          <button id="btn-close-resume-modal" type="button" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold">✕</button>
+        </div>
+      </div>
+      <div class="p-6 overflow-y-auto space-y-5 text-xs sm:text-sm text-slate-200 flex-1">
+        <div id="embedded-resume-pdf-container" class="w-full h-[500px] rounded-xl overflow-hidden border border-slate-700">
+          <iframe id="embedded-resume-iframe" src="assets/c2208e21eb6a8bf120df6814e46b09c74f820a229b9c0dfcff6b2a6f24faccf7.pdf" class="w-full h-full"></iframe>
+        </div>
+        <div class="bg-slate-950 border border-slate-800 rounded-2xl p-6 space-y-4">
+          <div class="border-b border-slate-800 pb-4 flex flex-wrap justify-between gap-2">
+            <div>
+              <h4 class="font-display text-xl font-bold text-white">RUDRA CHAKRABORTY</h4>
+              <p class="text-cyan-400 text-xs">Biomedical Engineer | AI, Machine Learning &amp; Soft Robotics Researcher</p>
+            </div>
+            <div class="text-xs text-slate-400 text-right">
+              <div>Chittagong, Bangladesh | +880 1311-829138</div>
+              <div>rudrachakraborty589@gmail.com | github.com/rudra330</div>
+            </div>
+          </div>
+          <div>
+            <h5 class="font-bold text-cyan-300 uppercase tracking-wider text-xs mb-1">Education</h5>
+            <p><strong>B.Sc. in Biomedical Engineering — CUET</strong> (2021–2026) | CGPA: 3.28/4.00 | Thesis: Smart Soft Pneumatic Hand Rehabilitation System with Camera-Driven Mirror Therapy (MotionMirror), Advisor: Dr. Sumit Majumder.</p>
+            <p class="text-slate-400 text-xs mt-1">HSC: Comilla Victoria Government College (2020, GPA 5.00/5.00) · SSC: Nizmehar Model Pilot High School (2018, GPA 5.00/5.00).</p>
+          </div>
+          <div>
+            <h5 class="font-bold text-cyan-300 uppercase tracking-wider text-xs mb-1">Publications &amp; Research</h5>
+            <p>[1] R. Chakraborty†, M.Z.I. Mahi†, M.Z. Hasan†, M.F.K. Khondakar, <em>"A Hybrid MDM-LDA Framework for Robust Motor Imagery Classification in Stroke Patients,"</em> IEEE Conference Manuscript (QPAIN / ICCIT 2026, 82% mean accuracy, κ = 0.62).</p>
+          </div>
+          <div>
+            <h5 class="font-bold text-cyan-300 uppercase tracking-wider text-xs mb-1">Certifications (Coursera 2026)</h5>
+            <ul class="list-disc pl-5 space-y-1 text-xs">
+              <li>Build AI Agents &amp; Secure API Integrations with n8n (Oct 2026 · Verify: 000GDUMC1N5R)</li>
+              <li>Integrate AI Models in n8n: Prompt Engineering &amp; Outputs (Aug 2026 · Verify: BYVGDH30N5R5)</li>
+              <li>Workflow Automation with n8n: Logic, Data &amp; Error Handling (Jul 2026 · Verify: QL0RH6HKU4UV)</li>
+              <li>GenAI for Healthcare Automation (Jun 2026 · Verify: XIZR960ZH8YL)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="visitor-project-modal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4 hidden" role="dialog" aria-modal="true" aria-labelledby="visitor-project-title">
+<div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-4xl w-full max-h-[90vh] flex flex-col overflow-hidden shadow-2xl">
+<div class="px-6 py-4 border-b border-slate-800 flex items-center justify-between gap-4"><div><p id="visitor-project-folder" class="text-xs text-cyan-300"></p><h3 id="visitor-project-title" class="font-display text-xl sm:text-2xl font-bold text-white mt-1"></h3></div><button id="visitor-project-close" type="button" class="w-8 h-8 rounded-full bg-slate-800 text-slate-300" aria-label="Close project details">✕</button></div>
+<div class="p-6 overflow-y-auto space-y-6"><img id="visitor-project-thumb" class="rounded-2xl border border-slate-800" style="width:100%;max-height:360px;object-fit:contain" alt=""><p id="visitor-project-desc" class="text-sm text-slate-300 leading-relaxed"></p><div id="visitor-project-tags" class="flex flex-wrap gap-2"></div><h4 class="font-display font-bold text-sm text-white">Project Media &amp; Documents</h4><div id="visitor-project-files" class="space-y-4"></div></div>
+</div></div><script src="portfolio.js" defer></script></body><div id="codex-browser-sidebar-comments-root" style="position: fixed; inset: 0px; pointer-events: none; z-index: 2147483647;"></div></html>
